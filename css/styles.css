@@ -1,0 +1,64 @@
+/*CSS - змінні*/
+:root {
+  --color-primary-dark: #31261a;
+  --color-primary-light: #faf4ea;
+  --color-brand-light: #819857; /*HAX value*/
+  --color-brand-dark: #465929;
+}
+
+/*1.Base - базові стилі*/
+/*задати домінаннтний основний коліп на сторінці*/
+body {
+  color: var(--color-primary-dark);
+}
+/*щоб прибрати маркування списків для усіх тегів ul*/
+ul {
+  list-style-type: none;
+}
+
+/*2.Button - стилі кнопки*/
+.button {
+  color: var(--color-primary-light);
+  background-color: var(--color-brand-light);
+  border: 2px solid var(--color-brand-light);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/*стиль при наведенні курсору*/
+.button:hover {
+  color: var(--color-brand-dark);
+  background-color: transparent;
+}
+
+/*3.link - стилі посилань*/
+.link {
+  color: var(--color-primary-light);
+}
+
+/*стиль при наведенні курсору*/
+.link:hover {
+  color: var(--color-brand-light);
+}
+
+/*4.Hero section - стилі головного заголовка*/
+/*для головного заголовка зазавичай назва класу:hero-title*/
+.hero-title {
+  color: var(--color-primary-light);
+}
+
+/*для виділення першого слова іншим кольором, найбільш доречно присвоїти йому окремий клас accent*/
+.hero-title .accent {
+  color: var(--color-brand-light);
+}
+
+/*5.А dvantages section - стилі заголовків пропозицій*/
+/*якщо перелік не посилання, то колів шрифта можна задати для батьківського тегу/класу, але для посилань - треба для кожного окремо задавати клас - так як робили вище (Шеф-кухарі, Контакти і т.д.*/
+.advantages-list {
+  color: var(--color-primary-light);
+  background-color: var(--color-brand-light);
+}
+
+.section-title .accent {
+  color: var(--color-brand-dark);
+}
