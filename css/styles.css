@@ -1,26 +1,119 @@
+/*Локальні шрифти*/
+/* poppins-300 - latin */
+@font-face {
+  font-display: swap; /*директива, прискорює оптимізацію і впливає на завантаження*/
+  font-family: 'Poppins';
+  font-weight: 300;
+  src: url('../fonts/poppins-v24-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* poppins-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-weight: 400;
+  src: url('../fonts/poppins-v24-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* poppins-600 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-weight: 600;
+  src: url('../fonts/poppins-v24-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* poppins-900 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-weight: 900;
+  src: url('../fonts/poppins-v24-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
 /*CSS - змінні*/
 :root {
   --color-primary-dark: #31261a;
   --color-primary-light: #faf4ea;
-  --color-brand-light: #819857; /*HAX value*/
+  --color-secondary-dark: #a18268;
+  --color-brand-normal: #819857; /*HAX value*/
   --color-brand-dark: #465929;
+  --color-brand-light: #cfcfbc;
 }
 
 /*1.Base - базові стилі*/
-/*задати домінаннтний основний коліп на сторінці*/
+* {
+  /*Зірочка  * - визначає вибрати усі елементи коди, застосовується до усього коду*/
+  box-sizing: border-box; /*Щоб ширина і висота елемента з врахуванням рамки і  внутрю відступу коректно опрацьов.браузером*/
+}
+
+/*задати домінантні основні властивості сторінки: колір, шрифт, розмір шрифта*/
 body {
   color: var(--color-primary-dark);
+  background-color: var(--color-primary-light);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
 }
+
+/*щоб прибрати автоматичний відступ браузера вгорі (margin-top)
+ для усіх заголовків*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+/*щоб для усіх адрес не змінювався стиль, 
+як це передбачено автоматично браузером*/
+address {
+  font-style: normal;
+}
+
 /*щоб прибрати маркування списків для усіх тегів ul*/
 ul {
+  margin: 0; /*прибираємо, інакше - за замовчуванням додається браузером до усіх переліків*/
+  padding: 0; /*прибираємо, інакше - за замовчуванням додається браузером до усіх переліків*/
   list-style-type: none;
+}
+
+/*Робимо заголовок дуже-дуже маленьким, щоб залишивсядля браузера, 
+для людей з вадами зору, 
+але щоб його візуально не було видно (як на прототипі)-->*/
+.visually-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.section {
+  padding: 48px 0; /*задаємо для усіх секцій відступи вертикальні
+  (і зверху, і знизу) - по 48, а горизонтальні - 0,через padding. 
+  Це правильніше, ніж через margin */
+}
+
+.container {
+  width: 100%; /*задаємо, щоб розмір вікна змінювався в залежності від розміру екрана*/
+  max-width: 1288px; /*фіксуємо максимальну ширину блока+враховуємо паддінги*/
+  margin: 0 auto; /*вирівнюємо по-середині, 
+  інакше за замовчуванням вирівнювання зліва 
+  і ширина не може бути зафіксована*/
+  padding: 0 24px;
 }
 
 /*2.Button - стилі кнопки*/
 .button {
+  padding: 16px 32px;
   color: var(--color-primary-light);
-  background-color: var(--color-brand-light);
-  border: 2px solid var(--color-brand-light);
+  font-weight: 600;
+  background-color: var(--color-brand-normal);
+  border: 2px solid var(--color-brand-normal);
   border-radius: 8px;
   cursor: pointer;
 }
@@ -34,31 +127,248 @@ ul {
 /*3.link - стилі посилань*/
 .link {
   color: var(--color-primary-light);
+  text-decoration: none; /*щоб прибрати підкреслення посилань за замовчуванням від браузера*/
 }
 
-/*стиль при наведенні курсору*/
+/*стиль при наведенні курсору на посилання -hover */
 .link:hover {
-  color: var(--color-brand-light);
+  color: var(--color-brand-normal);
+  /*font-weight: 600;-прибрали цю властивість для посилань, 
+  інакше при наведенні елементи стрибають, 
+  бо шрифт(елемент) стає більшим, так не має бути*/
 }
 
-/*4.Hero section - стилі головного заголовка*/
+/*4. Header*/
+.header-container {
+  display: flex; /*задаємо флекс-контейнер*/
+  align-items: center; /*щоб елементи не розтягувалися на всю висоту контейнеру, 
+  а зберігали задану для них висоту/відступи*/
+  gap: 40px; /*відступи справа і зліву, щоб при зменшенні екрану не злипалося*/
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /*щоб розтягнути по ширині у вільному місці контейнеру*/
+  gap: 40px; /*відступи справа і зліву, щоб при зменшенні екрану не злипалося*/
+}
+
+.header-menu {
+  display: flex; /*усі елементи стали в рядочок*/
+  gap: 64px; /*додає зазори між елементами усього меню*/
+  flex-grow: 1; /*щоб розтягнути по ширині у вільному місці контейнеру*/
+  justify-content: center; /*властивість, 
+  що відповідає за вирівнювання вздовж головної горизонтальної вісі*/
+}
+
+/*5.Hero section - стилі головного заголовка*/
 /*для головного заголовка зазавичай назва класу:hero-title*/
+.hero-section {
+  padding: 272px 0;
+  background-image: url('../images/hero-section-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center top; /*щоб по осі х - вирівнювалося по центру, 
+  а по осі у - по верху, щоб не обрізалися обличчя на картинці, 
+  якщо розміри екрану будуть менші*/
+  background-size: cover; /*щоб зображення займало усемь простір секції, 
+  без спотворення пропорції*/
+  /*background-attachment: fixed; /*фіксація зображення про скролінгу екрана для декорративного ефекту*/
+}
+
 .hero-title {
+  margin-bottom: 0;
   color: var(--color-primary-light);
+  text-align: center;
+  font-size: 128px;
+  font-weight: 900;
 }
 
-/*для виділення першого слова іншим кольором, найбільш доречно присвоїти йому окремий клас accent*/
+/*для виділення першого слова іншим кольором, 
+найбільш доречно присвоїти йому окремий клас accent*/
 .hero-title .accent {
-  color: var(--color-brand-light);
+  color: var(--color-brand-normal);
 }
 
-/*5.А dvantages section - стилі заголовків пропозицій*/
-/*якщо перелік не посилання, то колів шрифта можна задати для батьківського тегу/класу, але для посилань - треба для кожного окремо задавати клас - так як робили вище (Шеф-кухарі, Контакти і т.д.*/
+/*6.Аdvantages section - стилі заголовків пропозицій*/
+.advantages-section {
+  padding: 16px;
+  background-color: var(
+    --color-brand-normal
+  ); /*більш правильно задавати заливку для контейнеру, 
+  інакше вона не буде розтягуватися по вікну, а буде обмежена секцією*/
+}
+
 .advantages-list {
-  color: var(--color-primary-light);
-  background-color: var(--color-brand-light);
+  display: flex; /*задаємо елементи в рядок*/
+  justify-content: space-between; /*пропорційне розтягування елементів у рядку*/
+  gap: 40px; /*щоб елементи не торкалися між собоою, при зменшенні екрану*/
+}
+
+.advantages-item {
+  color: var(
+    --color-primary-light
+  ); /*якщо перелік не посилання, то колір  шрифта
+ можна задати для батьківського тегу/класу (advantages-list), 
+ але для посилань - треба для кожного окремо задавати клас - 
+ так як робили вище (Шеф-кухарі, Контакти і т.д.). 
+ П.С. Було змінено: перенесено до класу самих advantages-item, після створення цього класу */
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.section-title {
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1.3; /*задається коефіцієнтом: (line height 84px/font-size 64px) */
+}
+
+.section-title.centered {
+  /*для заголовків, що мають бути по-центру сторінки*/
+  text-align: center;
 }
 
 .section-title .accent {
   color: var(--color-brand-dark);
+}
+
+/*Traditions section*/
+.traditions-section {
+  padding-top: 96px;
+}
+
+.traditions-container {
+  display: flex; /*розташовуємо контакт і зображення (два блоки) в рядок*/
+  justify-content: space-between;
+  gap: 40px; /*невеликий зазор між блоками*/
+}
+
+.traditions-content {
+  min-width: 710px;
+}
+
+.traditios-title {
+  margin-bottom: 42px;
+}
+
+.traditions-text .brand {
+  /*спрацьовує для тих класів, що містять слово brand в .traditions-text*/
+  color: var(--color-brand-normal);
+  font-weight: 600;
+}
+
+.traditions-text .uppercase {
+  /*спрацьовує для тих класів, що містять слово uppercase в .traditions-text*/
+  text-transform: uppercase; /*шрифт у верхньому регістрі*/
+}
+
+.traditions-text.limited {
+  /*щоб звернутися саме до 2-го блоку (limited) класу traditions-text*/
+  max-width: 340px; /*щоб задати фіксовано ширину до цього блоку, 
+  а не виористовути примусове перенеення через властивість <br>, 
+  бо так некооектно*/
+}
+/*Chefs section*/
+.chefs-title {
+  max-width: 520px;
+  margin: 0 auto 80px;
+}
+
+.chefs-title::before {
+  /*задаємо псевдоелемент лінію*/
+  display: block;
+  width: 352px;
+  border: 2px solid var(--color-brand-light);
+  content: '';
+}
+.chefs-title::after {
+  /*задаємо псевдоелемент лінію*/
+  display: block;
+  width: 352px;
+  border: 2px solid var(--color-brand-light);
+  content: '';
+}
+
+.chef-photo {
+  border-radius: 4px 4px 4px 200px;
+  box-shadow: -16px 16px 0 0 var(--color-primary-light),
+    -16px 16px 0 2px var(--color-secondary-dark); /*псевдоелементом додали рамку з радіусом*/
+}
+.chef-title {
+  margin-bottom: 16px;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+/*Format section*/
+.formats-list {
+  display: flex; /*щоб розташувати картки в ряд*/
+  flex-wrap: wrap; /*щоб блоки переносилися на новий рядок,якщо у рядку більше 3-х*/
+  gap: 20px; /*проміжок між картками*/
+}
+
+.formats-item {
+  flex-basis: calc((100% - 40px) / 3);
+  /*розрахувати - задати для браузера, 
+  що розмір блоку спику має бути третя частина, 
+  при цьому відняти суму гепів між блоками. Якщо не задати, 
+  то блоки будуть звужуватися/розширятися в залежності від розміру вікна.
+  П.С. у формулі calc - обов. усе має розділятися пробілами!!!, інакше не спрацьовує */
+}
+
+.format-card {
+  height: 444px;
+  padding: 24px;
+  /*задаємо градієнт для блоку, з фігма*/
+  background-image: linear-gradient(
+    180deg,
+    rgba(49, 38, 26, 0) 55.21%,
+    rgba(49, 38, 26, 0.71) 72.92%,
+    var(--color-primary-dark) 100%
+  );
+  border: 1px solid lightgray;
+  border-radius: 16px;
+  box-shadow: 0px 4px 4px 0 #000000; /*задаємо тінь для блоку, з фігма*/
+}
+
+.formats-title {
+  margin-bottom: 80px;
+}
+
+.format-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.format-text {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/*Contact section*/
+.contact-title {
+  margin-bottom: 16px;
+}
+
+/*Footer*/
+.address-link {
+  color: var(--color-primary-light);
+  font-weight: 300;
+}
+
+.address-link:hover {
+  color: var(--color-brand-normal);
+}
+
+.address-copyright {
+  font-size: 14px;
+}
+
+.footer {
+  background-color: var(
+    --color-primary-dark
+  ); /*бажано завжди додавати фон, 
+  на той випадок якщо не дійде зображення то хоч відобразиться колір*/
+  background-image: url('../images/footer-background.png');
+  background-size: cover;
+  background-position: center;
 }
