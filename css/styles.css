@@ -39,8 +39,11 @@
 }
 
 /*1.Base - базові стилі*/
-* {
-  /*Зірочка  * - визначає вибрати усі елементи коди, застосовується до усього коду*/
+/* - "*" - визначає вибрати усі елементи коду, застосовується до усього коду,
+   - "*::after/::before" - застосування до усіх псевдо-елементів, будь-яких елементів */
+*,
+*::before,
+*::after {
   box-sizing: border-box; /*Щоб ширина і висота елемента з врахуванням рамки і  внутрю відступу коректно опрацьов.браузером*/
 }
 
@@ -65,6 +68,13 @@ h5,
 h6,
 p {
   margin-top: 0;
+}
+
+a {
+  display: inline-block; /* робимо елемент посилання рядковим,
+  щоб посилання не займало усього простору блоку,
+ і курсор змінювався лише при наведенні на текст посилання.
+ правильно додавати дане правило для усіх посилань*/
 }
 
 /*щоб для усіх адрес не змінювався стиль, 
@@ -269,7 +279,7 @@ ul {
 }
 /*Chefs section*/
 .chefs-title {
-  max-width: 520px;
+  max-width: 538px;
   margin: 0 auto 80px;
 }
 
@@ -287,6 +297,25 @@ ul {
   border: 2px solid var(--color-brand-light);
   content: '';
 }
+.chefs-list {
+  display: flex; /*щоб картки стали в ряд, перед цим було створено клас chefs-list і  */
+  gap: 40px 30px; /*1-й відповідає за відступ по висоті між картками, 2-й по-ширині*/
+  flex-wrap: wrap; /*якщо будуть додаватися нові каркти кухарів,
+  то картки будуть переноситися, а не пробувати влізти в один рядок,
+  стискаючи існуючі*/
+}
+
+.chefs-item {
+  flex-basis: calc((100% - 30px) / 2);
+  /*щоб у ряд поміщалося лише 2 картки і дилили простір порівну, 
+  та віднімаємо геп*/
+  /*обов'язково зазаначаємо пробіли у формулі*/
+}
+
+.chef-card {
+  display: flex;
+  gap: 30px;
+}
 
 .chef-photo {
   border-radius: 4px 4px 4px 200px;
@@ -299,7 +328,27 @@ ul {
   font-weight: 600;
 }
 
+.chef-text p/*звертаємося до кожного параграфу через "р"*/ {
+  margin-bottom: 24px;
+}
+
+.chef-text p:last-child {
+  /*прибираємо відступ після останнього параграфа*/
+  margin-bottom: 0px;
+}
+
+/* можна було б обрати такий варінт: для осіх, окрім останнього:
+.chef-text p:not(:last-child) {margin-bottom: 24px;}
+  але він не спрацює, бо вище задається обов. відступ для усіх у 18рх)
+*/
+
 /*Format section*/
+.format-container {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
 .formats-list {
   display: flex; /*щоб розташувати картки в ряд*/
   flex-wrap: wrap; /*щоб блоки переносилися на новий рядок,якщо у рядку більше 3-х*/
@@ -344,23 +393,111 @@ ul {
   font-weight: 300;
 }
 
+/*Carousel*/
+.carousel-button {
+  display: flex;
+  align-items: center; /*робить елементи вирівняними по центру зверху–вниз, по вертикалі*/
+  justify-content: center; /*Вирівнює елементи по головній осі, по горизонталі*/
+  flex-shrink: 0; /*властивість, щоб елемент не стискався, фіксує ширину*/
+  width: 44px;
+  height: 44px;
+  padding: 0; /*прибираємо паддінги, що авт.було додано браузером*/
+  background-color: transparent; /*щоб задати прозорий фон заливки*/
+  border-radius: 50%; /**щоб зробити кнопку круглою, інкше - квадрат*/
+  border: 1px solid var(--color-primary-dark);
+  cursor: pointer; /*щоб при наведенні змінювався вигляд курсору*/
+}
+
+.carousel-arrow {
+  fill: var(--color-primary-dark); /*колір стрілочки (самого елемента)*/
+}
+
+.carousel-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.carousel-button:hover .carousel-arrow {
+  /*при натисканні на кнопочку, 
+  елемент в середині має мінюватися на*/
+  fill: var(--color-primary-light);
+}
+
 /*Contact section*/
+.contacts-section {
+  padding-bottom: 96px;
+}
+
+.contact-container {
+  display: flex;
+  gap: 32px;
+}
+
 .contact-title {
   margin-bottom: 16px;
 }
 
+.contact-map {
+  flex-shrink: 0; /*щоб карта не стисклася, фіксуємо*/
+  border: none;
+  border-radius: 16px;
+}
+
 /*Footer*/
+.footer {
+  padding: 32px 0; /*паддінги завжди додаємо для самого верхнього елементу: для самої секції*/
+}
+
+.footer-container {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-nav,
+.footer-address /*якщо співпадають стилі для одних і тих же класів, 
+то можна їх зазаначати через "кому"*/ {
+  display: flex;
+  flex-basis: 50%; /*краще ніж марджени, не фіксовано розмір, 
+  буде пропорційно зменшуватися при зменшенні екрану*/
+  gap: 20px;
+}
+
+.footer-logo,
+.footer-menu {
+  flex-grow: 1; /*майже теж саме. що "flex-basis: 50%;" 
+  - але краще використовувати "flex-grow: 1";
+  краще ніж марджени, не фіксовано розмір, 
+  буде пропорційно зменшуватися при зменшенні екрану*/
+}
+
+.address-list,
+.address-info {
+  flex-grow: 1;
+}
+
 .address-link {
   color: var(--color-primary-light);
   font-weight: 300;
+  text-decoration: none;
 }
 
 .address-link:hover {
   color: var(--color-brand-normal);
 }
 
+.address-icon {
+  fill: var(
+    --color-primary-light
+  ); /*через властивість fill задається заливку для іконок*/
+  /*stroke: brown; /*щоб задати обводку для елементів іконки - прибираємо, бо не треба зараз*/
+}
+
+.address-icon:hover {
+  fill: var(--color-brand-normal);
+}
+
 .address-copyright {
   font-size: 14px;
+  color: var(--color-secondary-dark);
 }
 
 .footer {
