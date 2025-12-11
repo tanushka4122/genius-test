@@ -279,24 +279,31 @@ ul {
 }
 /*Chefs section*/
 .chefs-title {
-  max-width: 538px;
+  position: relative;
+  /*max-width: 520px; - прибираємо фіксовано ширину, 
+  вирішили питання з переносом на 2 рядки додаванням <br/> в html*/
   margin: 0 auto 80px;
 }
 
-.chefs-title::before {
-  /*задаємо псевдоелемент лінію*/
+/*Задаємо псевдоелементи "лінії@ і визначаємо властивості*/
+.chefs-title::before,
+.chefs-title::after {
   display: block;
   width: 352px;
   border: 2px solid var(--color-brand-light);
   content: '';
+  /*налаштовуємо позиції - розміщення на формі для псевдоелементів*/
+  position: absolute;
+  bottom: 24px; /*посуваємо до нижньої межі і додаємо відступ згідно макету*/
+}
+/*Визначаємо місце розміщення для псевдоелементів*/
+.chefs-title::before {
+  left: 0;
 }
 .chefs-title::after {
-  /*задаємо псевдоелемент лінію*/
-  display: block;
-  width: 352px;
-  border: 2px solid var(--color-brand-light);
-  content: '';
+  right: 0;
 }
+
 .chefs-list {
   display: flex; /*щоб картки стали в ряд, перед цим було створено клас chefs-list і  */
   gap: 40px 30px; /*1-й відповідає за відступ по висоті між картками, 2-й по-ширині*/
@@ -445,6 +452,37 @@ ul {
 /*Footer*/
 .footer {
   padding: 32px 0; /*паддінги завжди додаємо для самого верхнього елементу: для самої секції*/
+  position: relative; /*якщо не задати значення для position футеру, 
+  то псевдоелемент буде розміщуватися по відношенні до body, 
+  а не до блоку футера (батьківського елемента)*/
+  background-color: var(--color-primary-dark);
+  /*бажано завжди додавати фон, 
+  на той випадок якщо не дійде зображення то хоч відобразиться колір*/
+  background-image: url('../images/footer-background.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/*додаємо псевдоелементи  до футеру - малюнки хлибинок
+та позиціонуємо*/
+.footer::before,
+.footer::after {
+  position: absolute;
+  bottom: 0;
+  background-repeat: no-repeat;
+  content: '';
+}
+.footer::before {
+  left: 0;
+  width: 180px;
+  height: 120px;
+  background-image: url('../images/decor-bread-small.png');
+}
+.footer::after {
+  right: 0;
+  width: 380px;
+  height: 190px;
+  background-image: url('../images/decor-bread-large.png');
 }
 
 .footer-container {
@@ -500,12 +538,42 @@ ul {
   color: var(--color-secondary-dark);
 }
 
-.footer {
-  background-color: var(
-    --color-primary-dark
-  ); /*бажано завжди додавати фон, 
-  на той випадок якщо не дійде зображення то хоч відобразиться колір*/
-  background-image: url('../images/footer-background.png');
-  background-size: cover;
-  background-position: center;
+/*Modal - Стилі для модального вікна (вкладеної картки)*/
+/*Додаємо затемнений фон для модального вікна .backdrop*/
+.backdrop {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  /*розтягнення на усю ширину екрана*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /*розташування модального вікна по-центру затемненого фону*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backdrop.is-hidden {
+  /* display: none; - не зовсім коректно ховати модальне вікночерезе цю функцію
+ правильніше так, як описано нижче, адже ще може бути застована анімація*/
+  opacity: 0; /*вікно стає невидимим, але насправді не пропрадає*/
+  visibility: hidden; /*ховає вікно*/
+  pointer-events: none; /*забороняє клікати/обирати/виконувати дії з/на модальним вікном*/
+}
+
+.modal {
+  position: relative;
+  width: 880px;
+  height: 880px;
+  background-color: var(--color-primary-light);
+  border: 2px solid var(--color-primary-light); /*поки не було додано border - модальне вікно не відображалося!*/
+  border-radius: 32px;
+}
+
+/*Налаштовуємо кнопку закриття модального вікна*/
+.modal-btn-close {
+  position: absolute;
+  top: 40px;
+  right: 40px;
 }
