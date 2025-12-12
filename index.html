@@ -18,7 +18,7 @@
   </head>
   <body>
     <header>
-      <div class="container">
+      <div class="container header">
         <div class="header-container">
           <nav class="header-nav">
             <a href="/">
@@ -199,7 +199,7 @@
                 </article>
               </li>
             </ul>
-            <button class="carousel-button" type="button">
+            <button class="carousel-button next" type="button">
               <svg class="carousel-arrow" width="16" height="16">
                 <use href="./images/icons_svg-sprite.svg#icon-Arrow-1"></use>
               </svg>
@@ -310,7 +310,9 @@
         </div>
       </div>
     </footer>
-    <div class="backdrop">
+    <div class="backdrop is-hidden">
+      <!--додали клас "is-hidden", 
+      щоб модальне вікно за  замовчуванням було закрите-->
       <!--Затемнений фон для модального вікна-->
       <div class="modal">
         <!--Додаємо модальне вікно-->

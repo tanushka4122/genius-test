@@ -138,6 +138,7 @@ ul {
 .link {
   color: var(--color-primary-light);
   text-decoration: none; /*щоб прибрати підкреслення посилань за замовчуванням від браузера*/
+  transition: color 0.3s; /*задаємо перехід до елементу, але не до події!!!*/
 }
 
 /*стиль при наведенні курсору на посилання -hover */
@@ -149,6 +150,15 @@ ul {
 }
 
 /*4. Header*/
+.header {
+  /*розтягуємо хедер на Блок вгорі у т.ч. */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 32px; /*додаємо відступ зверху для блоку, як на прототипі*/
+}
+
 .header-container {
   display: flex; /*задаємо флекс-контейнер*/
   align-items: center; /*щоб елементи не розтягувалися на всю висоту контейнеру, 
@@ -175,7 +185,13 @@ ul {
 /*для головного заголовка зазавичай назва класу:hero-title*/
 .hero-section {
   padding: 272px 0;
-  background-image: url('../images/hero-section-background.jpg');
+  background-image: linear-gradient(
+      102.76deg,
+      rgba(18, 18, 17, 0.78) 2.03%,
+      rgba(18, 18, 17, 0.6) 58.46%,
+      rgba(18, 18, 17, 0) 90.36%
+    ),
+    url('../images/hero-section-background.jpg');
   background-repeat: no-repeat;
   background-position: center top; /*щоб по осі х - вирівнювалося по центру, 
   а по осі у - по верху, щоб не обрізалися обличчя на картинці, 
@@ -285,7 +301,7 @@ ul {
   margin: 0 auto 80px;
 }
 
-/*Задаємо псевдоелементи "лінії@ і визначаємо властивості*/
+/*Задаємо псевдоелементи "лінії" і визначаємо властивості*/
 .chefs-title::before,
 .chefs-title::after {
   display: block;
@@ -384,6 +400,12 @@ ul {
   border: 1px solid lightgray;
   border-radius: 16px;
   box-shadow: 0px 4px 4px 0 #000000; /*задаємо тінь для блоку, з фігма*/
+  transition: transform 0.3s; /*задаємо тривалість переходу - плавність*/
+}
+
+.format-card:hover {
+  transform: scale(1.05);
+  /*задаємо візуальне збільшення картки при наведенні на неї*/
 }
 
 .formats-title {
@@ -413,6 +435,14 @@ ul {
   border-radius: 50%; /**щоб зробити кнопку круглою, інкше - квадрат*/
   border: 1px solid var(--color-primary-dark);
   cursor: pointer; /*щоб при наведенні змінювався вигляд курсору*/
+}
+
+/*Повертаємо стрілочку вправо для каруселі*/
+.carousel-button.next {
+  /*читається як: якщо з класом "carousel-button", 
+  є клас "next", 
+  тоді треба виконати поврот стрілочки*/
+  transform: rotate(180deg);
 }
 
 .carousel-arrow {
@@ -542,6 +572,7 @@ ul {
 /*Додаємо затемнений фон для модального вікна .backdrop*/
 .backdrop {
   position: fixed;
+  padding: 20px 0;
   background-color: rgba(0, 0, 0, 0.5);
   /*розтягнення на усю ширину екрана*/
   top: 0;
@@ -552,10 +583,12 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  /*налаштування анімації*/
+  transition: opacity 0.3s, visibility 0.3s; /*плавність переходу*/
 }
 
 .backdrop.is-hidden {
-  /* display: none; - не зовсім коректно ховати модальне вікночерезе цю функцію
+  /* display: none; - не зовсім коректно ховати модальне вікно черезе цю функцію
  правильніше так, як описано нижче, адже ще може бути застована анімація*/
   opacity: 0; /*вікно стає невидимим, але насправді не пропрадає*/
   visibility: hidden; /*ховає вікно*/
@@ -564,8 +597,11 @@ ul {
 
 .modal {
   position: relative;
-  width: 880px;
-  height: 880px;
+  /*додаємо ширину і висоту модального вікна 100%, але не більше ніж max-...*/
+  width: 100%;
+  max-width: 880px;
+  height: 100%;
+  max-height: 880px;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light); /*поки не було додано border - модальне вікно не відображалося!*/
   border-radius: 32px;
