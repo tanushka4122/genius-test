@@ -134,6 +134,19 @@ ul {
   background-color: transparent;
 }
 
+/* 
+  Нижче приклад форматування для стану кнопки - "кнопка неактивна"
+    .button:disabled 
+    {
+    color:gray; 
+    background-color: lightgray;
+    border-color: currentColor; - додаємо наслідування кольору
+    cursor: not-allowed;
+    }
+  Не застосовуємо у нашому прикладі, 
+  бо нажаль через CSS не можна налаштувати правила, треба javaскрипт.
+  */
+
 /*3.link - стилі посилань*/
 .link {
   color: var(--color-primary-light);
@@ -602,9 +615,13 @@ ul {
   max-width: 880px;
   height: 100%;
   max-height: 880px;
+  padding: 128px;
   background-color: var(--color-primary-light);
-  border: 2px solid var(--color-primary-light); /*поки не було додано border - модальне вікно не відображалося!*/
+  border: 2px solid var(--color-primary-light); /*поки не було додано border - 
+  модальне вікно не відображалося!*/
   border-radius: 32px;
+  overflow-y: auto; /*додає скрол, щоб можна було прокуручувати вікно вниз, 
+  якщо усі поля не поміщаються на формі одразу*/
 }
 
 /*Налаштовуємо кнопку закриття модального вікна*/
@@ -612,4 +629,85 @@ ul {
   position: absolute;
   top: 40px;
   right: 40px;
+}
+
+/*Form*/
+.form-field {
+  position: relative; /*дозволяє зміщувати елемент, прив’язувати до себе дочерні елементи.*/
+  margin-bottom: 32px;
+}
+
+.form-label {
+  /*display: block; - щоб зробити елементи блоковим, 
+  інкше браузер усі назви і поля форми ставить у рядочок. 
+  Потім цю властивість прибрали, замінили на position:absolute */
+  position: absolute;
+  top: 16px;
+  left: 42px;
+}
+
+.form-input {
+  padding: 16px 42px;
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.17;
+  border: 1px solid var(--color-secondary-dark);
+  border-radius: 8px;
+  background-color: transparent; /*прозорий колір*/
+}
+
+.form-input:focus {
+  /*як будуть змінюватися властивості при введенні тексту*/
+  border-color: var(--color-brand-normal);
+  outline: none; /*прибираємо цю властивість виділення поля, 
+  що браузер додає за замовчуванням, інакше не видно змін кольору, що ми задали*/
+}
+
+/*
+Налаштування - показати обов"язковість:
+.form-input:required {
+    border-color: red;
+}
+у нашому прикладі не застосовуємо - 
+від дизайнера немає вимог до цього стану
+*/
+
+.form-input:disabled {
+  /*налаштування, коли поле неактивне для заповнення*/
+  border-color: lightgray;
+}
+
+.form-input:disabled::placeholder {
+  /*налаштування, коли поле неактивне для заповнення*/
+  color: lightgray;
+}
+
+.form-input::placeholder {
+  color: var(--color-secondary-dark);
+  font-size: 16px;
+  line-height: 1.17;
+}
+
+.form-input:focus:placeholder {
+  color: var(--color-primary-dark);
+}
+
+.form-button {
+  /*додаємо ці 2 властивості, щоб кнопка стала по-середині*/
+  display: block;
+  margin: 0 auto 24px;
+}
+
+.form-terms {
+  margin: 0 auto;
+  max-width: 220px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.form-terms-link {
+  color: var(--color-primary-dark);
+  text-underline-offset: 2px;
 }

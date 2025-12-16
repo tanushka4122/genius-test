@@ -217,6 +217,66 @@
               </h2>
               <p>Заповни форму, щоб ми звʼязались з тобою!</p>
               <!--form-->
+              <form name="contact-form" autocomplete="off">
+                <div class="form-field">
+                  <!--загортаємо поля у div, 
+            щоб можна було задавати форматування: відступи між полями-->
+                  <label class="form-label visually-hidden" for="user-name">
+                    Ім’я
+                  </label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    name="user-name"
+                    id="user-name"
+                    placeholder="Ім’я"
+                  />
+                  <!--зв"язуємо опис з елементом форми через id -->
+                  <!--type= - зазвичай це інформація для браузера, 
+          який змінює в залежності від типу розкладку (для телефону),
+           відображення-->
+                  <!--placeholder - підказка у полі -->
+                </div>
+
+                <div class="form-field">
+                  <label class="form-label visually-hidden" for="user-tel">
+                    Телефон
+                  </label>
+                  <input
+                    class="form-input"
+                    type="tel"
+                    name="user-name"
+                    id="user-tel"
+                    placeholder="Телефон"
+                  />
+                </div>
+
+                <div class="form-field">
+                  <label class="form-label visually-hidden" for="user-email">
+                    Електронна пошта
+                  </label>
+                  <input
+                    class="form-input"
+                    type="email"
+                    name="user-name"
+                    id="user-email"
+                    placeholder="Електронна пошта"
+                  />
+                </div>
+
+                <button class="button form-button" type="submit">
+                  Замовити дзвінок
+                </button>
+                <!--type="submit" - саме це значення відповідає, 
+          що дані з цієї форми мають бути відправлені на сервер
+          та перезавантажується сторінка-->
+                <p class="form-terms">
+                  Натискаючи на кнопку я погоджуюсь з
+                  <a class="form-terms-link" href="#"
+                    >політикою конфіденційності</a
+                  >
+                </p>
+              </form>
             </div>
             <!--2-й флекс-елемент-->
             <iframe
@@ -310,14 +370,88 @@
         </div>
       </div>
     </footer>
-    <div class="backdrop is-hidden">
-      <!--додали клас "is-hidden", 
-      щоб модальне вікно за  замовчуванням було закрите-->
+    <div class="backdrop">
       <!--Затемнений фон для модального вікна-->
       <div class="modal">
         <!--Додаємо модальне вікно-->
         <button class="modal-btn-close" type="button">Close</button>
         <!--кнопка, що має закривати модальне вікно-->
+        <h2>Замовити дзвінок</h2>
+        <p>Залишіть заявку та наш спеціаліст зв'яжеться з Вами!</p>
+        <form name="modal-form" autocomplete="on">
+          <!--додаємо форму модального вікна, з автозаповненням полів-->
+
+          <div class="form-field">
+            <!--загортаємо поля у div, 
+            щоб можна було задавати форматування: відступи між полями-->
+            <label class="form-label visually-hidden" for="user-name">
+              Ім’я
+            </label>
+            <input
+              class="form-input"
+              type="text"
+              name="user-name"
+              id="user-name"
+              placeholder="Ім’я"
+              required
+              minlength="2"
+              maxlength="20"
+            />
+            <!--зв"язуємо опис з елементом форми через id -->
+            <!--type= - зазвичай це інформація для браузера, 
+          який змінює в залежності від типу розкладку (для телефону),
+           відображення-->
+            <!--placeholder - підказка у полі -->
+            <!-- required - додаємо -  обов"язковість. Нажаль, інформативне вікно
+              не може бути змінено CSS - залежить від браузера-->
+            <!--disabled - якщо додати, робить поле неактивним.
+            Прибираємо з нашого прикладу, бо правила через javaскрипт налаштовуються-->
+          </div>
+
+          <div class="form-field">
+            <label class="form-label visually-hidden" for="user-tel">
+              Телефон
+            </label>
+            <input
+              class="form-input"
+              type="tel"
+              name="user-name"
+              id="user-tel"
+              placeholder="Телефон"
+              pattern="^\+[0-9]{12}"
+              required
+            />
+          </div>
+          <!--pattern - додаємо перевірку  регулярному виразу для формату моб.номеру-->
+
+          <div class="form-field">
+            <label class="form-label visually-hidden" for="user-email">
+              Електронна пошта
+            </label>
+            <input
+              class="form-input"
+              type="email"
+              name="user-name"
+              id="user-email"
+              placeholder="Електронна пошта"
+              required
+            />
+          </div>
+
+          <button class="button form-button" type="submit">
+            Замовити дзвінок
+          </button>
+          <!--type="submit" - саме це значення відповідає, 
+          що дані з цієї форми мають бути відправлені на сервер
+          та перезавантажується сторінка-->
+          <!--disabled -неактивність кнопки, 
+          нажаль через CSS не можна налаштувати правила щодо активності, треба javaскрипт.
+          Тому у нашому прикладі прибираємо-->
+          <p class="form-terms">
+            Натискаючи на кнопку я погоджуюсь з
+            <a class="form-terms-link" href="#">політикою конфіденційності</a>
+          </p>
+        </form>
       </div>
     </div>
     <!--
