@@ -1,0 +1,36 @@
+/*Traditions-section*/
+.traditions-section {
+  padding-top: 96px;
+}
+
+.traditions-container {
+  display: flex; /*розташовуємо контакт і зображення (два блоки) в рядок*/
+  justify-content: space-between;
+  gap: 40px; /*невеликий зазор між блоками*/
+}
+
+.traditions-content {
+  min-width: 710px;
+}
+
+.traditios-title {
+  margin-bottom: 42px;
+}
+
+.traditions-text .brand {
+  /*спрацьовує для тих класів, що містять слово brand в .traditions-text*/
+  color: var(--color-brand-normal);
+  font-weight: 600;
+}
+
+.traditions-text .uppercase {
+  /*спрацьовує для тих класів, що містять слово uppercase в .traditions-text*/
+  text-transform: uppercase; /*шрифт у верхньому регістрі*/
+}
+
+.traditions-text.limited {
+  /*щоб звернутися саме до 2-го блоку (limited) класу traditions-text*/
+  max-width: 340px; /*щоб задати фіксовано ширину до цього блоку, 
+  а не виористовути примусове перенеення через властивість <br>, 
+  бо так некооектно*/
+}

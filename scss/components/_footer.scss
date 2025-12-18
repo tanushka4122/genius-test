@@ -1,0 +1,88 @@
+/*Footer*/
+.footer {
+  padding: 32px 0; /*паддінги завжди додаємо для самого верхнього елементу: для самої секції*/
+  position: relative; /*якщо не задати значення для position футеру, 
+  то псевдоелемент буде розміщуватися по відношенні до body, 
+  а не до блоку футера (батьківського елемента)*/
+  background-color: var(--color-primary-dark);
+  /*бажано завжди додавати фон, 
+  на той випадок якщо не дійде зображення то хоч відобразиться колір*/
+  background-image: url('../images/footer-background.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/*додаємо псевдоелементи  до футеру - малюнки хлибинок
+та позиціонуємо*/
+.footer::before,
+.footer::after {
+  position: absolute;
+  bottom: 0;
+  background-repeat: no-repeat;
+  content: '';
+}
+.footer::before {
+  left: 0;
+  width: 180px;
+  height: 120px;
+  background-image: url('../images/decor-bread-small.png');
+}
+.footer::after {
+  right: 0;
+  width: 380px;
+  height: 190px;
+  background-image: url('../images/decor-bread-large.png');
+}
+
+.footer-container {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-nav,
+.footer-address /*якщо співпадають стилі для одних і тих же класів, 
+то можна їх зазаначати через "кому"*/ {
+  display: flex;
+  flex-basis: 50%; /*краще ніж марджени, не фіксовано розмір, 
+  буде пропорційно зменшуватися при зменшенні екрану*/
+  gap: 20px;
+}
+
+.footer-logo,
+.footer-menu {
+  flex-grow: 1; /*майже теж саме. що "flex-basis: 50%;" 
+  - але краще використовувати "flex-grow: 1";
+  краще ніж марджени, не фіксовано розмір, 
+  буде пропорційно зменшуватися при зменшенні екрану*/
+}
+
+.address-list,
+.address-info {
+  flex-grow: 1;
+}
+
+.address-link {
+  color: var(--color-primary-light);
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.address-link:hover {
+  color: var(--color-brand-normal);
+}
+
+.address-icon {
+  fill: var(
+    --color-primary-light
+  ); /*через властивість fill задається заливку для іконок*/
+  /*stroke: brown; /*щоб задати обводку для елементів іконки - прибираємо, бо не треба зараз*/
+}
+
+.address-icon:hover {
+  fill: var(--color-brand-normal);
+}
+
+.address-copyright {
+  font-size: 14px;
+  color: var(--color-secondary-dark);
+}

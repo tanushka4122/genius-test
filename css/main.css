@@ -1,33 +1,5 @@
-/*Локальні шрифти*/
-/* poppins-300 - latin */
-@font-face {
-  font-display: swap; /*директива, прискорює оптимізацію і впливає на завантаження*/
-  font-family: 'Poppins';
-  font-weight: 300;
-  src: url('../fonts/poppins-v24-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* poppins-regular - latin */
-@font-face {
-  font-display: swap;
-  font-family: 'Poppins';
-  font-weight: 400;
-  src: url('../fonts/poppins-v24-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* poppins-600 - latin */
-@font-face {
-  font-display: swap;
-  font-family: 'Poppins';
-  font-weight: 600;
-  src: url('../fonts/poppins-v24-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* poppins-900 - latin */
-@font-face {
-  font-display: swap;
-  font-family: 'Poppins';
-  font-weight: 900;
-  src: url('../fonts/poppins-v24-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
+@charset "UTF-8";
+/*CSS - змінні*/
 /*CSS - змінні*/
 :root {
   --color-primary-dark: #31261a;
@@ -38,7 +10,38 @@
   --color-brand-light: #cfcfbc;
 }
 
+/*Локальні шрифти*/
+/*Локальні шрифти*/
+/* poppins-300 - latin */
+@font-face {
+  font-display: swap; /*директива, прискорює оптимізацію і впливає на завантаження*/
+  font-family: "Poppins";
+  font-weight: 300;
+  src: url("../fonts/poppins-v24-latin-300.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* poppins-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Poppins";
+  font-weight: 400;
+  src: url("../fonts/poppins-v24-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* poppins-600 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Poppins";
+  font-weight: 600;
+  src: url("../fonts/poppins-v24-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* poppins-900 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Poppins";
+  font-weight: 900;
+  src: url("../fonts/poppins-v24-latin-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 /*1.Base - базові стилі*/
+/*Base - базові стилі*/
 /* - "*" - визначає вибрати усі елементи коду, застосовується до усього коду,
    - "*::after/::before" - застосування до усіх псевдо-елементів, будь-яких елементів */
 *,
@@ -51,7 +54,7 @@
 body {
   color: var(--color-primary-dark);
   background-color: var(--color-primary-light);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.5;
@@ -72,9 +75,9 @@ p {
 
 a {
   display: inline-block; /* робимо елемент посилання рядковим,
-  щоб посилання не займало усього простору блоку,
- і курсор змінювався лише при наведенні на текст посилання.
- правильно додавати дане правило для усіх посилань*/
+ щоб посилання не займало усього простору блоку,
+і курсор змінювався лише при наведенні на текст посилання.
+правильно додавати дане правило для усіх посилань*/
 }
 
 /*щоб для усіх адрес не змінювався стиль, 
@@ -90,6 +93,8 @@ ul {
   list-style-type: none;
 }
 
+/*підключаємо базові стилі, щл були перенесені в _base.scss*/
+/*1.1. Приховування заголовка*/
 /*Робимо заголовок дуже-дуже маленьким, щоб залишивсядля браузера, 
 для людей з вадами зору, 
 але щоб його візуально не було видно (як на прототипі)-->*/
@@ -104,20 +109,21 @@ ul {
 
 .section {
   padding: 48px 0; /*задаємо для усіх секцій відступи вертикальні
-  (і зверху, і знизу) - по 48, а горизонтальні - 0,через padding. 
-  Це правильніше, ніж через margin */
+(і зверху, і знизу) - по 48, а горизонтальні - 0,через padding. 
+Це правильніше, ніж через margin */
 }
 
 .container {
   width: 100%; /*задаємо, щоб розмір вікна змінювався в залежності від розміру екрана*/
   max-width: 1288px; /*фіксуємо максимальну ширину блока+враховуємо паддінги*/
   margin: 0 auto; /*вирівнюємо по-середині, 
-  інакше за замовчуванням вирівнювання зліва 
-  і ширина не може бути зафіксована*/
+інакше за замовчуванням вирівнювання зліва 
+і ширина не може бути зафіксована*/
   padding: 0 24px;
 }
 
 /*2.Button - стилі кнопки*/
+/*Button - стилі кнопки*/
 .button {
   padding: 16px 32px;
   color: var(--color-primary-light);
@@ -146,8 +152,8 @@ ul {
   Не застосовуємо у нашому прикладі, 
   бо нажаль через CSS не можна налаштувати правила, треба javaскрипт.
   */
-
 /*3.link - стилі посилань*/
+/*link - стилі посилань*/
 .link {
   color: var(--color-primary-light);
   text-decoration: none; /*щоб прибрати підкреслення посилань за замовчуванням від браузера*/
@@ -163,6 +169,7 @@ ul {
 }
 
 /*4. Header*/
+/*Header*/
 .header {
   /*розтягуємо хедер на Блок вгорі у т.ч. */
   position: absolute;
@@ -175,7 +182,7 @@ ul {
 .header-container {
   display: flex; /*задаємо флекс-контейнер*/
   align-items: center; /*щоб елементи не розтягувалися на всю висоту контейнеру, 
-  а зберігали задану для них висоту/відступи*/
+а зберігали задану для них висоту/відступи*/
   gap: 40px; /*відступи справа і зліву, щоб при зменшенні екрану не злипалося*/
 }
 
@@ -191,26 +198,21 @@ ul {
   gap: 64px; /*додає зазори між елементами усього меню*/
   flex-grow: 1; /*щоб розтягнути по ширині у вільному місці контейнеру*/
   justify-content: center; /*властивість, 
-  що відповідає за вирівнювання вздовж головної горизонтальної вісі*/
+що відповідає за вирівнювання вздовж головної горизонтальної вісі*/
 }
 
 /*5.Hero section - стилі головного заголовка*/
+/*Hero section - стилі головного заголовка*/
 /*для головного заголовка зазавичай назва класу:hero-title*/
 .hero-section {
   padding: 272px 0;
-  background-image: linear-gradient(
-      102.76deg,
-      rgba(18, 18, 17, 0.78) 2.03%,
-      rgba(18, 18, 17, 0.6) 58.46%,
-      rgba(18, 18, 17, 0) 90.36%
-    ),
-    url('../images/hero-section-background.jpg');
+  background-image: linear-gradient(102.76deg, rgba(18, 18, 17, 0.78) 2.03%, rgba(18, 18, 17, 0.6) 58.46%, rgba(18, 18, 17, 0) 90.36%), url("../images/hero-section-background.jpg");
   background-repeat: no-repeat;
   background-position: center top; /*щоб по осі х - вирівнювалося по центру, 
-  а по осі у - по верху, щоб не обрізалися обличчя на картинці, 
-  якщо розміри екрану будуть менші*/
+а по осі у - по верху, щоб не обрізалися обличчя на картинці, 
+якщо розміри екрану будуть менші*/
   background-size: cover; /*щоб зображення займало усемь простір секції, 
-  без спотворення пропорції*/
+без спотворення пропорції*/
   /*background-attachment: fixed; /*фіксація зображення про скролінгу екрана для декорративного ефекту*/
 }
 
@@ -228,13 +230,12 @@ ul {
   color: var(--color-brand-normal);
 }
 
-/*6.Аdvantages section - стилі заголовків пропозицій*/
+/*6. Аdvantages-section - стилі заголовків пропозицій*/
+/*Аdvantages-section - стилі заголовків пропозицій*/
 .advantages-section {
   padding: 16px;
-  background-color: var(
-    --color-brand-normal
-  ); /*більш правильно задавати заливку для контейнеру, 
-  інакше вона не буде розтягуватися по вікну, а буде обмежена секцією*/
+  background-color: var(--color-brand-normal); /*більш правильно задавати заливку для контейнеру, 
+інакше вона не буде розтягуватися по вікну, а буде обмежена секцією*/
 }
 
 .advantages-list {
@@ -244,13 +245,11 @@ ul {
 }
 
 .advantages-item {
-  color: var(
-    --color-primary-light
-  ); /*якщо перелік не посилання, то колір  шрифта
- можна задати для батьківського тегу/класу (advantages-list), 
- але для посилань - треба для кожного окремо задавати клас - 
- так як робили вище (Шеф-кухарі, Контакти і т.д.). 
- П.С. Було змінено: перенесено до класу самих advantages-item, після створення цього класу */
+  color: var(--color-primary-light); /*якщо перелік не посилання, то колір  шрифта
+можна задати для батьківського тегу/класу (advantages-list), 
+але для посилань - треба для кожного окремо задавати клас - 
+так як робили вище (Шеф-кухарі, Контакти і т.д.). 
+П.С. Було змінено: перенесено до класу самих advantages-item, після створення цього класу */
   font-size: 20px;
   font-weight: 300;
 }
@@ -270,7 +269,8 @@ ul {
   color: var(--color-brand-dark);
 }
 
-/*Traditions section*/
+/*7. Traditions-section*/
+/*Traditions-section*/
 .traditions-section {
   padding-top: 96px;
 }
@@ -303,10 +303,12 @@ ul {
 .traditions-text.limited {
   /*щоб звернутися саме до 2-го блоку (limited) класу traditions-text*/
   max-width: 340px; /*щоб задати фіксовано ширину до цього блоку, 
-  а не виористовути примусове перенеення через властивість <br>, 
-  бо так некооектно*/
+а не виористовути примусове перенеення через властивість <br>, 
+бо так некооектно*/
 }
-/*Chefs section*/
+
+/*8. Chefs-section*/
+/*Chefs-section*/
 .chefs-title {
   position: relative;
   /*max-width: 520px; - прибираємо фіксовано ширину, 
@@ -320,15 +322,17 @@ ul {
   display: block;
   width: 352px;
   border: 2px solid var(--color-brand-light);
-  content: '';
+  content: "";
   /*налаштовуємо позиції - розміщення на формі для псевдоелементів*/
   position: absolute;
   bottom: 24px; /*посуваємо до нижньої межі і додаємо відступ згідно макету*/
 }
+
 /*Визначаємо місце розміщення для псевдоелементів*/
 .chefs-title::before {
   left: 0;
 }
+
 .chefs-title::after {
   right: 0;
 }
@@ -337,8 +341,8 @@ ul {
   display: flex; /*щоб картки стали в ряд, перед цим було створено клас chefs-list і  */
   gap: 40px 30px; /*1-й відповідає за відступ по висоті між картками, 2-й по-ширині*/
   flex-wrap: wrap; /*якщо будуть додаватися нові каркти кухарів,
-  то картки будуть переноситися, а не пробувати влізти в один рядок,
-  стискаючи існуючі*/
+то картки будуть переноситися, а не пробувати влізти в один рядок,
+стискаючи існуючі*/
 }
 
 .chefs-item {
@@ -355,16 +359,16 @@ ul {
 
 .chef-photo {
   border-radius: 4px 4px 4px 200px;
-  box-shadow: -16px 16px 0 0 var(--color-primary-light),
-    -16px 16px 0 2px var(--color-secondary-dark); /*псевдоелементом додали рамку з радіусом*/
+  box-shadow: -16px 16px 0 0 var(--color-primary-light), -16px 16px 0 2px var(--color-secondary-dark); /*псевдоелементом додали рамку з радіусом*/
 }
+
 .chef-title {
   margin-bottom: 16px;
   font-size: 40px;
   font-weight: 600;
 }
 
-.chef-text p/*звертаємося до кожного параграфу через "р"*/ {
+.chef-text p {
   margin-bottom: 24px;
 }
 
@@ -377,8 +381,8 @@ ul {
 .chef-text p:not(:last-child) {margin-bottom: 24px;}
   але він не спрацює, бо вище задається обов. відступ для усіх у 18рх)
 */
-
-/*Format section*/
+/*9. Format-section*/
+/*Format-section*/
 .format-container {
   display: flex;
   align-items: center;
@@ -401,24 +405,33 @@ ul {
 }
 
 .format-card {
+  position: relative;
   height: 444px;
   padding: 24px;
   /*задаємо градієнт для блоку, з фігма*/
-  background-image: linear-gradient(
-    180deg,
-    rgba(49, 38, 26, 0) 55.21%,
-    rgba(49, 38, 26, 0.71) 72.92%,
-    var(--color-primary-dark) 100%
-  );
-  border: 1px solid lightgray;
+  background-image: linear-gradient(180deg, rgba(49, 38, 26, 0) 55.21%, rgba(49, 38, 26, 0.71) 72.92%, var(--color-primary-dark) 100%);
+  /*border: 1px solid lightgray; - видаляємо*/
   border-radius: 16px;
   box-shadow: 0px 4px 4px 0 #000000; /*задаємо тінь для блоку, з фігма*/
   transition: transform 0.3s; /*задаємо тривалість переходу - плавність*/
+  /*додаємо влстивості, щоб текст у картці відображався по нижньому краю*/
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .format-card:hover {
   transform: scale(1.05);
   /*задаємо візуальне збільшення картки при наведенні на неї*/
+}
+
+.format-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .formats-title {
@@ -428,13 +441,16 @@ ul {
 .format-title {
   font-size: 24px;
   font-weight: 600;
+  color: var(--color-primary-light);
 }
 
 .format-text {
   font-size: 14px;
   font-weight: 300;
+  color: var(--color-primary-light);
 }
 
+/*10. Carousel*/
 /*Carousel*/
 .carousel-button {
   display: flex;
@@ -472,7 +488,8 @@ ul {
   fill: var(--color-primary-light);
 }
 
-/*Contact section*/
+/*11. Contact-section*/
+/*Contact-section*/
 .contacts-section {
   padding-bottom: 96px;
 }
@@ -492,16 +509,17 @@ ul {
   border-radius: 16px;
 }
 
+/*12. Footer*/
 /*Footer*/
 .footer {
   padding: 32px 0; /*паддінги завжди додаємо для самого верхнього елементу: для самої секції*/
   position: relative; /*якщо не задати значення для position футеру, 
-  то псевдоелемент буде розміщуватися по відношенні до body, 
-  а не до блоку футера (батьківського елемента)*/
+то псевдоелемент буде розміщуватися по відношенні до body, 
+а не до блоку футера (батьківського елемента)*/
   background-color: var(--color-primary-dark);
   /*бажано завжди додавати фон, 
   на той випадок якщо не дійде зображення то хоч відобразиться колір*/
-  background-image: url('../images/footer-background.png');
+  background-image: url("../images/footer-background.png");
   background-size: cover;
   background-position: center;
 }
@@ -513,19 +531,21 @@ ul {
   position: absolute;
   bottom: 0;
   background-repeat: no-repeat;
-  content: '';
+  content: "";
 }
+
 .footer::before {
   left: 0;
   width: 180px;
   height: 120px;
-  background-image: url('../images/decor-bread-small.png');
+  background-image: url("../images/decor-bread-small.png");
 }
+
 .footer::after {
   right: 0;
   width: 380px;
   height: 190px;
-  background-image: url('../images/decor-bread-large.png');
+  background-image: url("../images/decor-bread-large.png");
 }
 
 .footer-container {
@@ -534,20 +554,19 @@ ul {
 }
 
 .footer-nav,
-.footer-address /*якщо співпадають стилі для одних і тих же класів, 
-то можна їх зазаначати через "кому"*/ {
+.footer-address {
   display: flex;
   flex-basis: 50%; /*краще ніж марджени, не фіксовано розмір, 
-  буде пропорційно зменшуватися при зменшенні екрану*/
+буде пропорційно зменшуватися при зменшенні екрану*/
   gap: 20px;
 }
 
 .footer-logo,
 .footer-menu {
   flex-grow: 1; /*майже теж саме. що "flex-basis: 50%;" 
-  - але краще використовувати "flex-grow: 1";
-  краще ніж марджени, не фіксовано розмір, 
-  буде пропорційно зменшуватися при зменшенні екрану*/
+- але краще використовувати "flex-grow: 1";
+краще ніж марджени, не фіксовано розмір, 
+буде пропорційно зменшуватися при зменшенні екрану*/
 }
 
 .address-list,
@@ -566,9 +585,7 @@ ul {
 }
 
 .address-icon {
-  fill: var(
-    --color-primary-light
-  ); /*через властивість fill задається заливку для іконок*/
+  fill: var(--color-primary-light); /*через властивість fill задається заливку для іконок*/
   /*stroke: brown; /*щоб задати обводку для елементів іконки - прибираємо, бо не треба зараз*/
 }
 
@@ -602,7 +619,7 @@ ul {
 
 .backdrop.is-hidden {
   /* display: none; - не зовсім коректно ховати модальне вікно черезе цю функцію
- правильніше так, як описано нижче, адже ще може бути застована анімація*/
+  правильніше так, як описано нижче, адже ще може бути застована анімація*/
   opacity: 0; /*вікно стає невидимим, але насправді не пропрадає*/
   visibility: hidden; /*ховає вікно*/
   pointer-events: none; /*забороняє клікати/обирати/виконувати дії з/на модальним вікном*/
@@ -618,10 +635,10 @@ ul {
   padding: 128px;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light); /*поки не було додано border - 
-  модальне вікно не відображалося!*/
+модальне вікно не відображалося!*/
   border-radius: 32px;
   overflow-y: auto; /*додає скрол, щоб можна було прокуручувати вікно вниз, 
-  якщо усі поля не поміщаються на формі одразу*/
+якщо усі поля не поміщаються на формі одразу*/
 }
 
 /*Налаштовуємо кнопку закриття модального вікна*/
@@ -660,7 +677,7 @@ ul {
   /*як будуть змінюватися властивості при введенні тексту*/
   border-color: var(--color-brand-normal);
   outline: none; /*прибираємо цю властивість виділення поля, 
-  що браузер додає за замовчуванням, інакше не видно змін кольору, що ми задали*/
+що браузер додає за замовчуванням, інакше не видно змін кольору, що ми задали*/
 }
 
 /*
@@ -671,15 +688,25 @@ ul {
 у нашому прикладі не застосовуємо - 
 від дизайнера немає вимог до цього стану
 */
-
 .form-input:disabled {
   /*налаштування, коли поле неактивне для заповнення*/
   border-color: lightgray;
 }
 
+.form-input:disabled::-moz-placeholder {
+  /*налаштування, коли поле неактивне для заповнення*/
+  color: lightgray;
+}
+
 .form-input:disabled::placeholder {
   /*налаштування, коли поле неактивне для заповнення*/
   color: lightgray;
+}
+
+.form-input::-moz-placeholder {
+  color: var(--color-secondary-dark);
+  font-size: 16px;
+  line-height: 1.17;
 }
 
 .form-input::placeholder {
@@ -710,4 +737,4 @@ ul {
 .form-terms-link {
   color: var(--color-primary-dark);
   text-underline-offset: 2px;
-}
+}/*# sourceMappingURL=main.css.map */
