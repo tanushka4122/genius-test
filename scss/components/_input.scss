@@ -1,0 +1,57 @@
+/*Forms - input - для використання на декіькох формах*/
+.input {
+  position: relative; /*дозволяє зміщувати елемент, прив’язувати до себе дочерні елементи.*/
+
+  &__label {
+    /*display: block; - щоб зробити елементи блоковим, 
+  інкше браузер усі назви і поля форми ставить у рядочок. 
+  Потім цю властивість прибрали, замінили на position:absolute */
+    position: absolute;
+    top: 16px;
+    left: 42px;
+  }
+
+  &__control {
+    padding: 16px 42px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.17;
+    border: 1px solid var(--color-secondary-dark);
+    border-radius: 8px;
+    background-color: transparent; /*прозорий колір*/
+
+    &:focus {
+      /*як будуть змінюватися властивості при введенні тексту*/
+      border-color: var(--color-brand-normal);
+      outline: none; /*прибираємо цю властивість виділення поля, 
+  що браузер додає за замовчуванням, інакше не видно змін кольору, що ми задали*/
+    }
+    &::placeholder {
+      color: var(--color-secondary-dark);
+      font-size: 16px;
+      line-height: 1.17;
+    }
+
+    &:focus::placeholder {
+      color: var(--color-primary-dark);
+    }
+  }
+}
+/*
+Налаштування - показати обов"язковість:
+.form-input:required {
+    border-color: red;
+}
+
+.form-input:disabled {
+      /*налаштування, коли поле неактивне для заповнення
+      border-color: lightgray;
+    }
+    
+.form-input:disabled::placeholder {
+  /*налаштування, коли поле неактивне для заповнення
+  color: lightgray;
+}
+у нашому прикладі не застосовуємо - 
+від дизайнера немає вимог до цього стану
+*/

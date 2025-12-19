@@ -10,20 +10,14 @@
 /*1.1. Приховування заголовка*/
 @import './utils/utils';
 
-.section {
-  padding: 48px 0; /*задаємо для усіх секцій відступи вертикальні
-  (і зверху, і знизу) - по 48, а горизонтальні - 0,через padding. 
-  Це правильніше, ніж через margin */
-}
+/*Section*/
+@import './layouts/section';
 
-.container {
-  width: 100%; /*задаємо, щоб розмір вікна змінювався в залежності від розміру екрана*/
-  max-width: 1288px; /*фіксуємо максимальну ширину блока+враховуємо паддінги*/
-  margin: 0 auto; /*вирівнюємо по-середині, 
-  інакше за замовчуванням вирівнювання зліва 
-  і ширина не може бути зафіксована*/
-  padding: 0 24px;
-}
+/*Text-brand*/
+@import './utils/texts';
+
+/*Container*/
+@import './layouts/container';
 
 /*2.Button - стилі кнопки*/
 @import './components/buttons';
@@ -32,159 +26,43 @@
 @import './components/links';
 
 /*4. Header*/
-@import './components/header';
+@import './layouts/header';
 
 /*5.Hero section - стилі головного заголовка*/
-@import './components/hero-section';
+@import './layouts/hero-section';
 
 /*6. Аdvantages-section - стилі заголовків пропозицій*/
-@import './components/advantages-section';
+@import './layouts/advantages-section';
 
 /*7. Traditions-section*/
-@import './components/traditions-section';
+@import './layouts/traditions-section';
 
 /*8. Chefs-section*/
-@import './components/chefs-section';
+@import './layouts/chefs-section';
 
-/*9. Format-section*/
-@import './components/format-section';
+/*8.1. Chef-card*/
+@import './components/chef-card';
+
+/*9. Formats-section*/
+@import './layouts/formats-section';
+
+/*9.1. Format-card*/
+@import './components/format-card';
 
 /*10. Carousel*/
-@import './components/carousel';
+@import './components/carousel-button';
 
 /*11. Contact-section*/
-@import './components/contact-section';
+@import './layouts/contact-section';
 
 /*12. Footer*/
-@import './components/footer';
+@import './layouts/footer';
 
-/*Modal - Стилі для модального вікна (вкладеної картки)*/
-/*Додаємо затемнений фон для модального вікна .backdrop*/
-.backdrop {
-  position: fixed;
-  padding: 20px 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  /*розтягнення на усю ширину екрана*/
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /*розташування модального вікна по-центру затемненого фону*/
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /*налаштування анімації*/
-  transition: opacity 0.3s, visibility 0.3s; /*плавність переходу*/
-}
+/*13. Modal*/
+@import './layouts/modal';
 
-.backdrop.is-hidden {
-  /* display: none; - не зовсім коректно ховати модальне вікно черезе цю функцію
- правильніше так, як описано нижче, адже ще може бути застована анімація*/
-  opacity: 0; /*вікно стає невидимим, але насправді не пропрадає*/
-  visibility: hidden; /*ховає вікно*/
-  pointer-events: none; /*забороняє клікати/обирати/виконувати дії з/на модальним вікном*/
-}
+/*14. Forms-input*/
+@import './components/input';
 
-.modal {
-  position: relative;
-  /*додаємо ширину і висоту модального вікна 100%, але не більше ніж max-...*/
-  width: 100%;
-  max-width: 880px;
-  height: 100%;
-  max-height: 880px;
-  padding: 128px;
-  background-color: var(--color-primary-light);
-  border: 2px solid var(--color-primary-light); /*поки не було додано border - 
-  модальне вікно не відображалося!*/
-  border-radius: 32px;
-  overflow-y: auto; /*додає скрол, щоб можна було прокуручувати вікно вниз, 
-  якщо усі поля не поміщаються на формі одразу*/
-}
-
-/*Налаштовуємо кнопку закриття модального вікна*/
-.modal-btn-close {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-}
-
-/*Form*/
-.form-field {
-  position: relative; /*дозволяє зміщувати елемент, прив’язувати до себе дочерні елементи.*/
-  margin-bottom: 32px;
-}
-
-.form-label {
-  /*display: block; - щоб зробити елементи блоковим, 
-  інкше браузер усі назви і поля форми ставить у рядочок. 
-  Потім цю властивість прибрали, замінили на position:absolute */
-  position: absolute;
-  top: 16px;
-  left: 42px;
-}
-
-.form-input {
-  padding: 16px 42px;
-  width: 100%;
-  font-size: 16px;
-  line-height: 1.17;
-  border: 1px solid var(--color-secondary-dark);
-  border-radius: 8px;
-  background-color: transparent; /*прозорий колір*/
-}
-
-.form-input:focus {
-  /*як будуть змінюватися властивості при введенні тексту*/
-  border-color: var(--color-brand-normal);
-  outline: none; /*прибираємо цю властивість виділення поля, 
-  що браузер додає за замовчуванням, інакше не видно змін кольору, що ми задали*/
-}
-
-/*
-Налаштування - показати обов"язковість:
-.form-input:required {
-    border-color: red;
-}
-у нашому прикладі не застосовуємо - 
-від дизайнера немає вимог до цього стану
-*/
-
-.form-input:disabled {
-  /*налаштування, коли поле неактивне для заповнення*/
-  border-color: lightgray;
-}
-
-.form-input:disabled::placeholder {
-  /*налаштування, коли поле неактивне для заповнення*/
-  color: lightgray;
-}
-
-.form-input::placeholder {
-  color: var(--color-secondary-dark);
-  font-size: 16px;
-  line-height: 1.17;
-}
-
-.form-input:focus:placeholder {
-  color: var(--color-primary-dark);
-}
-
-.form-button {
-  /*додаємо ці 2 властивості, щоб кнопка стала по-середині*/
-  display: block;
-  margin: 0 auto 24px;
-}
-
-.form-terms {
-  margin: 0 auto;
-  max-width: 220px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.5;
-  text-align: center;
-}
-
-.form-terms-link {
-  color: var(--color-primary-dark);
-  text-underline-offset: 2px;
-}
+/*.14.1. Form-terms*/
+@import './components/form-terms';

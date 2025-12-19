@@ -1,0 +1,62 @@
+/*Modal - Стилі для модального вікна (вкладеної картки)*/
+/*Додаємо затемнений фон для модального вікна .backdrop*/
+.backdrop {
+  position: fixed;
+  padding: 20px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /*розтягнення на усю ширину екрана*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /*розташування модального вікна по-центру затемненого фону*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*налаштування анімації*/
+  transition: opacity 0.3s, visibility 0.3s; /*плавність переходу*/
+
+  &__is-hidden {
+    /* display: none; - не зовсім коректно ховати модальне вікно черезе цю функцію
+ правильніше так, як описано нижче, адже ще може бути застована анімація*/
+    opacity: 0; /*вікно стає невидимим, але насправді не пропрадає*/
+    visibility: hidden; /*ховає вікно*/
+    pointer-events: none; /*забороняє клікати/обирати/виконувати дії з/на модальним вікном*/
+  }
+}
+
+/*is-hidden має реально змінювати layout (display / visibility / pointer-events)*/
+.backdrop.is-hidden {
+  display: none;
+}
+
+.modal {
+  position: relative;
+  /*додаємо ширину і висоту модального вікна 100%, але не більше ніж max-...*/
+  width: 100%;
+  max-width: 880px;
+  height: 100%;
+  max-height: 880px;
+  padding: 128px;
+  background-color: var(--color-primary-light);
+  border: 2px solid var(--color-primary-light); /*поки не було додано border - 
+  модальне вікно не відображалося!*/
+  border-radius: 32px;
+  overflow-y: auto; /*додає скрол, щоб можна було прокуручувати вікно вниз, 
+  якщо усі поля не поміщаються на формі одразу*/
+
+  /*Налаштовуємо кнопку закриття модального вікна*/
+  &__btn-close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+  }
+  &__form-field {
+    margin-bottom: 32px;
+  }
+
+  &__button {
+    display: block;
+    margin: 0 auto 24px;
+  }
+}

@@ -1,0 +1,29 @@
+.chef-card {
+  display: flex;
+  gap: 30px;
+
+  &__photo {
+    border-radius: 4px 4px 4px 200px;
+    box-shadow: -16px 16px 0 0 var(--color-primary-light),
+      -16px 16px 0 2px var(--color-secondary-dark); /*псевдоелементом додали рамку з радіусом*/
+  }
+  &__title {
+    margin-bottom: 16px;
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  &__text /*звертаємося до кожного параграфу через "р"*/ {
+    margin-bottom: 24px;
+
+    &:last-child {
+      /*прибираємо відступ після останнього параграфа*/
+      margin-bottom: 0px;
+
+      /* можна було б обрати такий варінт: для осіх, окрім останнього:
+.chef-text p:not(:last-child) {margin-bottom: 24px;}
+  але він не спрацює, бо вище задається обов. відступ для усіх у 18рх)
+*/
+    }
+  }
+}

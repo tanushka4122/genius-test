@@ -16,18 +16,21 @@
   background-size: cover; /*щоб зображення займало усемь простір секції, 
   без спотворення пропорції*/
   /*background-attachment: fixed; /*фіксація зображення про скролінгу екрана для декорративного ефекту*/
+
+  &__title {
+    margin-bottom: 0;
+    color: var(--color-primary-light);
+    text-align: center;
+    font-size: 128px;
+    font-weight: 900;
+  }
 }
 
-.hero-title {
-  margin-bottom: 0;
-  color: var(--color-primary-light);
-  text-align: center;
-  font-size: 128px;
-  font-weight: 900;
-}
-
-/*для виділення першого слова іншим кольором, 
-найбільш доречно присвоїти йому окремий клас accent*/
+/*Варіант 1: для виділення першого слова в hero-title та chefs-section 
+іншим кольором, найбільш доречно присвоїти йому окремий клас accent
 .hero-title .accent {
   color: var(--color-brand-normal);
 }
+  
+потім цей клас видалили і замінили на text-brand -> в _texts.scss - як окремий блок,
+що може використовуватися в різних місцях*/

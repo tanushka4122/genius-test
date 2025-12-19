@@ -49,3 +49,8 @@ ul {
   padding: 0; /*прибираємо, інакше - за замовчуванням додається браузером до усіх переліків*/
   list-style-type: none;
 }
+
+/*is-hidden має реально змінювати layout (display / visibility / pointer-events)*/
+.backdrop.is-hidden {
+  display: none;
+}

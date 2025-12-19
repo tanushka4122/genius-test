@@ -1,0 +1,46 @@
+.format-card {
+  position: relative;
+  height: 444px;
+  padding: 24px;
+  /*задаємо градієнт для блоку, з фігма*/
+  background-image: linear-gradient(
+    180deg,
+    rgba(49, 38, 26, 0) 55.21%,
+    rgba(49, 38, 26, 0.71) 72.92%,
+    var(--color-primary-dark) 100%
+  );
+  /*border: 1px solid lightgray; - видаляємо*/
+  border-radius: 16px;
+  box-shadow: 0px 4px 4px 0 #000000; /*задаємо тінь для блоку, з фігма*/
+  transition: transform 0.3s; /*задаємо тривалість переходу - плавність*/
+  /*додаємо влстивості, щоб текст у картці відображався по нижньому краю*/
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  &:hover {
+    transform: scale(1.05);
+    /*задаємо візуальне збільшення картки при наведенні на неї*/
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-primary-light);
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--color-primary-light);
+  }
+}
