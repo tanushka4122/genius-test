@@ -1,9 +1,14 @@
 /*Traditions-section*/
 .traditions-section {
-  padding-top: 96px;
+  padding-top: 40px;
+
+  @media screen and (min-width: $bp-tablet) {
+    padding-top: 96px;
+  }
 
   &__container {
     display: flex; /*розташовуємо контакт і зображення (два блоки) в рядок*/
+    align-items: flex-start; /*щоб картинка не стискалася, при зменшенні*/
     justify-content: space-between;
     gap: 40px; /*невеликий зазор між блоками*/
   }
@@ -22,6 +27,15 @@
       max-width: 340px; /*щоб задати фіксовано ширину до цього блоку, 
       а не виористовути примусове перенеення через властивість <br>, 
       бо так некооектно*/
+    }
+  }
+
+  &__image {
+    display: none;
+    border-radius: 400px 400px 0 0;
+
+    @media screen and (min-width: $bp-tablet) {
+      display: block;
     }
   }
 

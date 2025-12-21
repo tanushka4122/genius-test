@@ -4,41 +4,59 @@
     position: relative;
     /*max-width: 520px; - прибираємо фіксовано ширину, 
     вирішили питання з переносом на 2 рядки додаванням <br/> в html*/
-    margin: 0 auto 80px;
+    margin: 0 auto 24px;
+
+    @media screen and (min-width: $bp-desktop) {
+      margin-bottom: 80px;
+    }
 
     /*Задаємо псевдоелементи "лінії" і визначаємо властивості*/
     &::before,
     &::after {
-      display: block;
-      width: 352px;
-      border: 2px solid var(--color-brand-light);
-      content: '';
-      /*налаштовуємо позиції - розміщення на формі для псевдоелементів*/
-      position: absolute;
-      bottom: 24px; /*посуваємо до нижньої межі і додаємо відступ згідно макету*/
+      display: none;
+
+      @media screen and (min-width: $bp-desktop) {
+        display: block;
+        width: 352px;
+        border: 2px solid var(--color-brand-light);
+        content: '';
+        /*налаштовуємо позиції - розміщення на формі для псевдоелементів*/
+        position: absolute;
+        bottom: 24px; /*посуваємо до нижньої межі і додаємо відступ згідно макету*/
+      }
     }
 
     /*Визначаємо місце розміщення для псевдоелементів*/
-    &::before {
-      left: 0;
-    }
-    &::after {
-      right: 0;
+    @media screen and (min-width: $bp-desktop) {
+      &::before {
+        left: 0;
+      }
+      &::after {
+        right: 0;
+      }
     }
   }
 
   &__list {
     display: flex; /*щоб картки стали в ряд, перед цим було створено клас chefs-list і  */
-    gap: 40px 30px; /*1-й відповідає за відступ по висоті між картками, 2-й по-ширині*/
+    flex-direction: column;
     flex-wrap: wrap; /*якщо будуть додаватися нові каркти кухарів,
     то картки будуть переноситися, а не пробувати влізти в один рядок,
     стискаючи існуючі*/
+    gap: 20px;
+
+    @media screen and (min-width: $bp-tablet) {
+      flex-direction: row;
+      gap: 40px 30px; /*1-й відповідає за відступ по висоті між картками, 2-й по-ширині*/
+    }
   }
 
   &__item {
-    flex-basis: calc((100% - 30px) / 2);
-    /*щоб у ряд поміщалося лише 2 картки і дилили простір порівну, 
+    @media screen and (min-width: $bp-tablet) {
+      flex-basis: calc((100% - 30px) / 2);
+      /*щоб у ряд поміщалося лише 2 картки і дилили простір порівну, 
       та віднімаємо геп*/
-    /*обов'язково зазаначаємо пробіли у формулі*/
+      /*обов'язково зазаначаємо пробіли у формулі*/
+    }
   }
 }

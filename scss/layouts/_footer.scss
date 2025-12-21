@@ -14,75 +14,88 @@
 
 /*додаємо псевдоелементи  до футеру - малюнки хлибинок
 та позиціонуємо*/
-.footer::before,
-.footer::after {
+&::before,
+&::after {
   position: absolute;
   bottom: 0;
   background-repeat: no-repeat;
   content: '';
 }
-.footer::before {
+&::before {
   left: 0;
   width: 180px;
   height: 120px;
   background-image: url('../images/decor-bread-small.png');
 }
-.footer::after {
+&::after {
   right: 0;
   width: 380px;
   height: 190px;
   background-image: url('../images/decor-bread-large.png');
 }
 
-.footer-container {
+&__container {
   display: flex;
+  flex-direction: column;
   gap: 20px;
+
+  @media screen and (min-width: $bp-tablet) {
+    flex-direction: row;
+  }
 }
 
-.footer-nav,
-.footer-address /*якщо співпадають стилі для одних і тих же класів, 
+&__nav,
+&__address /*якщо співпадають стилі для одних і тих же класів, 
 то можна їх зазаначати через "кому"*/ {
   display: flex;
+  text-align: center;
+  flex-direction: column;
   flex-basis: 50%; /*краще ніж марджени, не фіксовано розмір, 
   буде пропорційно зменшуватися при зменшенні екрану*/
   gap: 20px;
-}
 
-.footer-logo,
-.footer-menu {
-  flex-grow: 1; /*майже теж саме. що "flex-basis: 50%;" 
+  @media screen and (min-width: $bp-tablet) {
+    flex-direction: row;
+    flex-basis: 50%;
+    text-align: left;
+  }
+
+  &__logo,
+  &__menu {
+    flex-grow: 1; /*майже теж саме. що "flex-basis: 50%;" 
   - але краще використовувати "flex-grow: 1";
   краще ніж марджени, не фіксовано розмір, 
   буде пропорційно зменшуватися при зменшенні екрану*/
-}
+  }
 
-.address-list,
-.address-info {
-  flex-grow: 1;
-}
+  &__address-list,
+  &__address-info {
+    flex-grow: 1;
+  }
 
-.address-link {
-  color: var(--color-primary-light);
-  font-weight: 300;
-  text-decoration: none;
-}
+  &__address-link {
+    color: var(--color-primary-light);
+    font-weight: 300;
+    text-decoration: none;
+  }
 
-.address-link:hover {
-  color: var(--color-brand-normal);
-}
+  &__address-link:hover {
+    color: var(--color-brand-normal);
+  }
 
-.address-icon {
-  fill: var(
-    --color-primary-light
-  ); /*через властивість fill задається заливку для іконок*/
-  /*stroke: brown; /*щоб задати обводку для елементів іконки - прибираємо, бо не треба зараз*/
-}
+  &__address-icon {
+    fill: var(
+      --color-primary-light
+    ); /*через властивість fill задається заливку для іконок*/
+    /*stroke: brown; /*щоб задати обводку для елементів іконки - прибираємо, бо не треба зараз*/
+  }
 
-.address-icon:hover {
-  fill: var(--color-brand-normal);
-}
+  &__address-icon:hover {
+    fill: var(--color-brand-normal);
+  }
 
-.address-copyright {
-  font-size: 14px;
-  color: var(--color-secondary-dark);
+  &__address-copyright {
+    font-size: 14px;
+    color: var(--color-secondary-dark);
+  }
 }

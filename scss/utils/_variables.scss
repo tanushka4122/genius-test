@@ -7,3 +7,8 @@
   --color-brand-dark: #465929;
   --color-brand-light: #cfcfbc;
 }
+
+/*Створюємо SCSS змінні для різних розмірів дисплеїв*/
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-desktop: 1280px;

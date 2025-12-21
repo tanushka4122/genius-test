@@ -1,13 +1,22 @@
 /*Section*/
 .section {
-  padding: 48px 0; /*задаємо для усіх секцій відступи вертикальні
+  padding: 20px 0;
+
+  @media screen and (min-width: $bp-tablet) {
+    padding: 48px 0; /*задаємо для усіх секцій відступи вертикальні
   (і зверху, і знизу) - по 48, а горизонтальні - 0,через padding. 
   Це правильніше, ніж через margin */
+  }
 
   &__title {
-    font-size: 64px;
+    font-size: 32px;
     font-weight: 900;
-    line-height: 1.3; /*задається коефіцієнтом: (line height 84px/font-size 64px) */
+    line-height: 1.5; /*задається коефіцієнтом*/
+
+    @media screen and (min-width: $bp-tablet) {
+      font-size: 64px;
+      line-height: 1.3; /*задається коефіцієнтом: (line height 84px/font-size 64px) */
+    }
 
     &--centered {
       /*для заголовків, що мають бути по-центру сторінки*/

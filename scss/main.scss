@@ -1,68 +1,56 @@
-/*CSS - змінні*/
-@import './utils/variables';
+/*Згідно стандарту - 
+необхідно розміщувати по алфавіту*/
 
+/*Змінні*/
+@import './utils/variables';
 /*Локальні шрифти*/
 @import './utils/fonts';
-
-/*1.Base - базові стилі*/
-@import './base'; /*підключаємо базові стилі, щл були перенесені в _base.scss*/
-
-/*1.1. Приховування заголовка*/
-@import './utils/utils';
-
-/*Section*/
-@import './layouts/section';
-
 /*Text-brand*/
 @import './utils/texts';
+/*Приховування заголовка*/
+@import './utils/utils';
 
+/*Base - базові стилі*/
+@import './base'; /*підключаємо базові стилі, що були перенесені в _base.scss*/
+
+/*Аdvantages-section - стилі заголовків пропозицій*/
+@import './layouts/advantages-section';
+/*Chefs-section*/
+@import './layouts/chefs-section';
+/*Contact-section*/
+@import './layouts/contact-section';
 /*Container*/
 @import './layouts/container';
-
-/*2.Button - стилі кнопки*/
-@import './components/buttons';
-
-/*3.link - стилі посилань*/
-@import './components/links';
-
-/*4. Header*/
+/*Footer*/
+@import './layouts/footer';
+/*Formats-section*/
+@import './layouts/formats-section';
+/*Header*/
 @import './layouts/header';
-
-/*5.Hero section - стилі головного заголовка*/
+/*Hero section - стилі головного заголовка*/
 @import './layouts/hero-section';
-
-/*6. Аdvantages-section - стилі заголовків пропозицій*/
-@import './layouts/advantages-section';
-
-/*7. Traditions-section*/
+/*Mobile-menu*/
+@import './layouts/mobile-menu';
+/*Modal*/
+@import './layouts/modal';
+/*Section*/
+@import './layouts/section';
+/*Traditions-section*/
 @import './layouts/traditions-section';
 
-/*8. Chefs-section*/
-@import './layouts/chefs-section';
-
-/*8.1. Chef-card*/
-@import './components/chef-card';
-
-/*9. Formats-section*/
-@import './layouts/formats-section';
-
-/*9.1. Format-card*/
-@import './components/format-card';
-
-/*10. Carousel*/
+/*Button - стилі кнопки*/
+@import './components/buttons';
+/*Carousel*/
 @import './components/carousel-button';
-
-/*11. Contact-section*/
-@import './layouts/contact-section';
-
-/*12. Footer*/
-@import './layouts/footer';
-
-/*13. Modal*/
-@import './layouts/modal';
-
-/*14. Forms-input*/
-@import './components/input';
-
-/*.14.1. Form-terms*/
+/*Chef-card*/
+@import './components/chef-card';
+/*Form-terms*/
 @import './components/form-terms';
+/*Format-card*/
+@import './components/format-card';
+/*Forms-input*/
+@import './components/input';
+/*link - стилі посилань*/
+@import './components/links';
+/*Кнопочки для слайдеру внизу*/
+@import './components/pagination';

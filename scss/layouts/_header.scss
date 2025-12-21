@@ -5,7 +5,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding-top: 32px; /*додаємо відступ зверху для блоку, як на прототипі*/
+  padding-top: 16px; /*додаємо відступ зверху для блоку, як на прототипі*/
+
+  @media screen and (min-width: $bp-desktop) {
+    padding-top: 32px; /*додаємо відступ зверху для блоку, як на прототипі*/
+  }
 
   &__container {
     display: flex; /*задаємо флекс-контейнер*/
@@ -22,10 +26,37 @@
   }
 
   &__menu {
-    display: flex; /*усі елементи стали в рядочок*/
-    gap: 64px; /*додає зазори між елементами усього меню*/
-    flex-grow: 1; /*щоб розтягнути по ширині у вільному місці контейнеру*/
-    justify-content: center; /*властивість, 
+    display: none; /* щоб верхнє меню пропадало, 
+      якщо зменшується ширина екрану*/
+
+    @media screen and (min-width: $bp-desktop) {
+      display: flex; /*усі елементи стали в рядочок*/
+      gap: 64px; /*додає зазори між елементами усього меню*/
+      flex-grow: 1; /*щоб розтягнути по ширині у вільному місці контейнеру*/
+      justify-content: center; /*властивість, 
   що відповідає за вирівнювання вздовж головної горизонтальної вісі*/
+    }
+  }
+
+  &__button.button {
+    display: none; /* щоб кнопка пропадала зверху, 
+      якщо зменшується ширина екрану*/
+
+    @media screen and (min-width: $bp-desktop) {
+      display: block;
+    }
+  }
+
+  &__burger {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    fill: var(--color-primary-light);
+
+    @media screen and (min-width: $bp-desktop) {
+      display: none; /* щоб кнопка була відсутня для великого екрану*/
+    }
   }
 }

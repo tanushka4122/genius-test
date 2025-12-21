@@ -12,10 +12,15 @@ body {
   color: var(--color-primary-dark);
   background-color: var(--color-primary-light);
   font-family: 'Poppins', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 300;
   line-height: 1.5;
   margin: 0;
+
+  @media screen and (min-width: $bp-tablet) {
+    font-size: 18px;
+    font-weight: 400;
+  }
 }
 
 /*щоб прибрати автоматичний відступ браузера вгорі (margin-top)
@@ -28,6 +33,14 @@ h5,
 h6,
 p {
   margin-top: 0;
+}
+
+img {
+  display: block; /*бо, за замовчуванням зображення - рядкові елементи*/
+  max-width: 100%; /*щоб мали якусь ширину і мали можливість масштабуватися,
+  а не просто лишалися з фіксованими розмірами*/
+  height: auto;
+  object-fit: cover; /*для збереження пропорцій картинки*/
 }
 
 a {
@@ -48,9 +61,4 @@ ul {
   margin: 0; /*прибираємо, інакше - за замовчуванням додається браузером до усіх переліків*/
   padding: 0; /*прибираємо, інакше - за замовчуванням додається браузером до усіх переліків*/
   list-style-type: none;
-}
-
-/*is-hidden має реально змінювати layout (display / visibility / pointer-events)*/
-.backdrop.is-hidden {
-  display: none;
 }

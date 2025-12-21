@@ -1,5 +1,8 @@
 .format-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   height: 444px;
   padding: 24px;
   /*задаємо градієнт для блоку, з фігма*/
@@ -11,17 +14,15 @@
   );
   /*border: 1px solid lightgray; - видаляємо*/
   border-radius: 16px;
-  box-shadow: 0px 4px 4px 0 #000000; /*задаємо тінь для блоку, з фігма*/
-  transition: transform 0.3s; /*задаємо тривалість переходу - плавність*/
+  /*box-shadow: 0px 4px 4px 0 #000000; /*задаємо тінь для блоку, з фігма*/
+  overflow: hidden;
+  /*transition: transform 0.3s; /*задаємо тривалість переходу - плавність*/
   /*додаємо влстивості, щоб текст у картці відображався по нижньому краю*/
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
 
-  &:hover {
+  /*&:hover {
     transform: scale(1.05);
-    /*задаємо візуальне збільшення картки при наведенні на неї*/
-  }
+    /*задаємо візуальне збільшення картки при наведенні на неї*
+  }*/
 
   &__image {
     position: absolute;

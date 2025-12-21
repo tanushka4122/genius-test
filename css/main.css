@@ -1,5 +1,7 @@
 @charset "UTF-8";
-/*CSS - змінні*/
+/*Згідно стандарту - 
+необхідно розміщувати по алфавіту*/
+/*Змінні*/
 /*CSS - змінні*/
 :root {
   --color-primary-dark: #31261a;
@@ -10,6 +12,7 @@
   --color-brand-light: #cfcfbc;
 }
 
+/*Створюємо SCSS змінні для різних розмірів дисплеїв*/
 /*Локальні шрифти*/
 /*Локальні шрифти*/
 /* poppins-300 - latin */
@@ -40,95 +43,6 @@
   font-weight: 900;
   src: url("../fonts/poppins-v24-latin-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/*1.Base - базові стилі*/
-/*Base - базові стилі*/
-/* - "*" - визначає вибрати усі елементи коду, застосовується до усього коду,
-   - "*::after/::before" - застосування до усіх псевдо-елементів, будь-яких елементів */
-*,
-*::before,
-*::after {
-  box-sizing: border-box; /*Щоб ширина і висота елемента з врахуванням рамки і  внутрю відступу коректно опрацьов.браузером*/
-}
-
-/*задати домінантні основні властивості сторінки: колір, шрифт, розмір шрифта*/
-body {
-  color: var(--color-primary-dark);
-  background-color: var(--color-primary-light);
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.5;
-  margin: 0;
-}
-
-/*щоб прибрати автоматичний відступ браузера вгорі (margin-top)
- для усіх заголовків*/
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin-top: 0;
-}
-
-a {
-  display: inline-block; /* робимо елемент посилання рядковим,
- щоб посилання не займало усього простору блоку,
-і курсор змінювався лише при наведенні на текст посилання.
-правильно додавати дане правило для усіх посилань*/
-}
-
-/*щоб для усіх адрес не змінювався стиль, 
-як це передбачено автоматично браузером*/
-address {
-  font-style: normal;
-}
-
-/*щоб прибрати маркування списків для усіх тегів ul*/
-ul {
-  margin: 0; /*прибираємо, інакше - за замовчуванням додається браузером до усіх переліків*/
-  padding: 0; /*прибираємо, інакше - за замовчуванням додається браузером до усіх переліків*/
-  list-style-type: none;
-}
-
-/*is-hidden має реально змінювати layout (display / visibility / pointer-events)*/
-.backdrop.is-hidden {
-  display: none;
-}
-
-/*підключаємо базові стилі, щл були перенесені в _base.scss*/
-/*1.1. Приховування заголовка*/
-/*Робимо заголовок дуже-дуже маленьким, щоб залишивсядля браузера, 
-для людей з вадами зору, 
-але щоб його візуально не було видно (як на прототипі)-->*/
-.visually-hidden {
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-/*Section*/
-/*Section*/
-.section {
-  padding: 48px 0; /*задаємо для усіх секцій відступи вертикальні
-(і зверху, і знизу) - по 48, а горизонтальні - 0,через padding. 
-Це правильніше, ніж через margin */
-}
-.section__title {
-  font-size: 64px;
-  font-weight: 900;
-  line-height: 1.3; /*задається коефіцієнтом: (line height 84px/font-size 64px) */
-}
-.section__title--centered {
-  /*для заголовків, що мають бути по-центру сторінки*/
-  text-align: center;
-}
-
 /*Text-brand*/
 .text-brand {
   color: var(--color-brand-normal);
@@ -171,343 +85,209 @@ ul {
 потім цей клас видалили і замінили на text-brand та text-bold, text-uppercase
 - як окремий блок,
 що може використовуватися в різних місцях*/
-/*Container*/
-/*Container*/
-.container {
-  width: 100%; /*задаємо, щоб розмір вікна змінювався в залежності від розміру екрана*/
-  max-width: 1288px; /*фіксуємо максимальну ширину блока+враховуємо паддінги*/
-  margin: 0 auto; /*вирівнюємо по-середині, 
-інакше за замовчуванням вирівнювання зліва 
-і ширина не може бути зафіксована*/
-  padding: 0 24px;
-}
-
-/*2.Button - стилі кнопки*/
-/*Button - стилі кнопки*/
-.button {
-  padding: 16px 32px;
-  color: var(--color-primary-light);
-  font-weight: 600;
-  background-color: var(--color-brand-normal);
-  border: 2px solid var(--color-brand-normal);
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/*стиль при наведенні курсору*/
-.button:hover {
-  color: var(--color-brand-dark);
-  background-color: transparent;
-}
-
-/* 
-  Нижче приклад форматування для стану кнопки - "кнопка неактивна"
-    .button:disabled 
-    {
-    color:gray; 
-    background-color: lightgray;
-    border-color: currentColor; - додаємо наслідування кольору
-    cursor: not-allowed;
-    }
-  Не застосовуємо у нашому прикладі, 
-  бо нажаль через CSS не можна налаштувати правила, треба javaскрипт.
-  */
-/*3.link - стилі посилань*/
-/*link - стилі посилань*/
-.link {
-  color: var(--color-primary-light);
-  text-decoration: none; /*щоб прибрати підкреслення посилань за замовчуванням від браузера*/
-  transition: color 0.3s; /*задаємо перехід до елементу, але не до події!!!*/
-}
-
-/*стиль при наведенні курсору на посилання -hover */
-.link:hover {
-  color: var(--color-brand-normal);
-  /*font-weight: 600;-прибрали цю властивість для посилань, 
-  інакше при наведенні елементи стрибають, 
-  бо шрифт(елемент) стає більшим, так не має бути*/
-}
-
-/*4. Header*/
-/*Header*/
-.header {
-  /*розтягуємо хедер на Блок вгорі у т.ч. */
+/*Приховування заголовка*/
+/*Робимо заголовок дуже-дуже маленьким, щоб залишивсядля браузера, 
+для людей з вадами зору, 
+але щоб його візуально не було видно (як на прототипі)-->*/
+.visually-hidden {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding-top: 32px; /*додаємо відступ зверху для блоку, як на прототипі*/
-}
-.header__container {
-  display: flex; /*задаємо флекс-контейнер*/
-  align-items: center; /*щоб елементи не розтягувалися на всю висоту контейнеру, 
-а зберігали задану для них висоту/відступи*/
-  gap: 40px; /*відступи справа і зліву, щоб при зменшенні екрану не злипалося*/
-}
-.header__nav {
-  display: flex;
-  align-items: center;
-  flex-grow: 1; /*щоб розтягнути по ширині у вільному місці контейнеру*/
-  gap: 40px; /*відступи справа і зліву, щоб при зменшенні екрану не злипалося*/
-}
-.header__menu {
-  display: flex; /*усі елементи стали в рядочок*/
-  gap: 64px; /*додає зазори між елементами усього меню*/
-  flex-grow: 1; /*щоб розтягнути по ширині у вільному місці контейнеру*/
-  justify-content: center; /*властивість, 
-що відповідає за вирівнювання вздовж головної горизонтальної вісі*/
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
-/*5.Hero section - стилі головного заголовка*/
-/*Hero section - стилі головного заголовка*/
-/*для головного заголовка зазавичай назва класу:hero-title*/
-.hero-section {
-  padding: 272px 0;
-  background-image: linear-gradient(102.76deg, rgba(18, 18, 17, 0.78) 2.03%, rgba(18, 18, 17, 0.6) 58.46%, rgba(18, 18, 17, 0) 90.36%), url("../images/hero-section-background.jpg");
-  background-repeat: no-repeat;
-  background-position: center top; /*щоб по осі х - вирівнювалося по центру, 
-а по осі у - по верху, щоб не обрізалися обличчя на картинці, 
-якщо розміри екрану будуть менші*/
-  background-size: cover; /*щоб зображення займало усемь простір секції, 
-без спотворення пропорції*/
-  /*background-attachment: fixed; /*фіксація зображення про скролінгу екрана для декорративного ефекту*/
-}
-.hero-section__title {
-  margin-bottom: 0;
-  color: var(--color-primary-light);
-  text-align: center;
-  font-size: 128px;
-  font-weight: 900;
+/*Base - базові стилі*/
+/*Base - базові стилі*/
+/* - "*" - визначає вибрати усі елементи коду, застосовується до усього коду,
+   - "*::after/::before" - застосування до усіх псевдо-елементів, будь-яких елементів */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /*Щоб ширина і висота елемента з врахуванням рамки і  внутрю відступу коректно опрацьов.браузером*/
 }
 
-/*Варіант 1: для виділення першого слова в hero-title та chefs-section 
-іншим кольором, найбільш доречно присвоїти йому окремий клас accent
-.hero-title .accent {
-  color: var(--color-brand-normal);
+/*задати домінантні основні властивості сторінки: колір, шрифт, розмір шрифта*/
+body {
+  color: var(--color-primary-dark);
+  background-color: var(--color-primary-light);
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
+}
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 18px;
+    font-weight: 400;
+  }
 }
 
-потім цей клас видалили і замінили на text-brand -> в _texts.scss - як окремий блок,
-що може використовуватися в різних місцях*/
-/*6. Аdvantages-section - стилі заголовків пропозицій*/
+/*щоб прибрати автоматичний відступ браузера вгорі (margin-top)
+ для усіх заголовків*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+img {
+  display: block; /*бо, за замовчуванням зображення - рядкові елементи*/
+  max-width: 100%; /*щоб мали якусь ширину і мали можливість масштабуватися,
+а не просто лишалися з фіксованими розмірами*/
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover; /*для збереження пропорцій картинки*/
+}
+
+a {
+  display: inline-block; /* робимо елемент посилання рядковим,
+ щоб посилання не займало усього простору блоку,
+і курсор змінювався лише при наведенні на текст посилання.
+правильно додавати дане правило для усіх посилань*/
+}
+
+/*щоб для усіх адрес не змінювався стиль, 
+як це передбачено автоматично браузером*/
+address {
+  font-style: normal;
+}
+
+/*щоб прибрати маркування списків для усіх тегів ul*/
+ul {
+  margin: 0; /*прибираємо, інакше - за замовчуванням додається браузером до усіх переліків*/
+  padding: 0; /*прибираємо, інакше - за замовчуванням додається браузером до усіх переліків*/
+  list-style-type: none;
+}
+
+/*підключаємо базові стилі, що були перенесені в _base.scss*/
+/*Аdvantages-section - стилі заголовків пропозицій*/
 /*Аdvantages-section - стилі заголовків пропозицій*/
 .advantages-section {
-  padding: 16px;
-  background-color: var(--color-brand-normal); /*більш правильно задавати заливку для контейнеру, 
-інакше вона не буде розтягуватися по вікну, а буде обмежена секцією*/
+  padding: 16px 0;
+}
+@media screen and (min-width: 768px) {
+  .advantages-section {
+    background-color: var(--color-brand-normal);
+    /*більш правильно задавати заливку для контейнеру, 
+    інакше вона не буде розтягуватися по вікну, а буде обмежена секцією*/
+  }
 }
 .advantages-section__list {
   display: flex; /*задаємо елементи в рядок*/
-  justify-content: space-between; /*пропорційне розтягування елементів у рядку*/
-  gap: 40px; /*щоб елементи не торкалися між собоою, при зменшенні екрану*/
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 40px;
+  background-color: var(--color-brand-light);
+  border-radius: 24px;
+}
+@media screen and (min-width: 768px) {
+  .advantages-section__list {
+    flex-direction: row;
+    justify-content: space-between; /*пропорційне розтягування елементів у рядку*/
+    gap: 40px; /*щоб елементи не торкалися між собоою, при зменшенні екрану*/
+    background-color: transparent;
+    padding: 0;
+  }
 }
 .advantages-section__item {
-  color: var(--color-primary-light); /*якщо перелік не посилання, то колір  шрифта
-можна задати для батьківського тегу/класу (advantages-list), 
-але для посилань - треба для кожного окремо задавати клас - 
-так як робили вище (Шеф-кухарі, Контакти і т.д.). 
-П.С. Було змінено: перенесено до класу самих advantages-item, після створення цього класу */
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 300;
 }
-
-/*7. Traditions-section*/
-/*Traditions-section*/
-.traditions-section {
-  padding-top: 96px;
-  /*клас .traditions-text.limited змінили на модифікатор: traditions-section__text--limited*/
-}
-.traditions-section__container {
-  display: flex; /*розташовуємо контакт і зображення (два блоки) в рядок*/
-  justify-content: space-between;
-  gap: 40px; /*невеликий зазор між блоками*/
-}
-.traditions-section__content {
-  min-width: 710px;
-}
-.traditions-section__title {
-  margin-bottom: 42px;
-}
-.traditions-section__text--limited {
-  /*щоб звернутися саме до 2-го блоку (limited) класу traditions-text*/
-  max-width: 340px; /*щоб задати фіксовано ширину до цього блоку, 
-а не виористовути примусове перенеення через властивість <br>, 
-бо так некооектно*/
+@media screen and (min-width: 768px) {
+  .advantages-section__item {
+    color: var(--color-primary-light);
+    /*якщо перелік не посилання, то колір  шрифта
+    можна задати для батьківського тегу/класу (advantages-list), 
+    але для посилань - треба для кожного окремо задавати клас - 
+    так як робили вище (Шеф-кухарі, Контакти і т.д.). 
+    П.С. Було змінено: перенесено до класу самих advantages-item, 
+    після створення цього класу */
+    font-size: 20px;
+  }
 }
 
-/*8. Chefs-section*/
+/*Chefs-section*/
 /*Chefs-section*/
 .chefs-section__title {
   position: relative;
   /*max-width: 520px; - прибираємо фіксовано ширину, 
   вирішили питання з переносом на 2 рядки додаванням <br/> в html*/
-  margin: 0 auto 80px;
+  margin: 0 auto 24px;
   /*Задаємо псевдоелементи "лінії" і визначаємо властивості*/
   /*Визначаємо місце розміщення для псевдоелементів*/
 }
+@media screen and (min-width: 1280px) {
+  .chefs-section__title {
+    margin-bottom: 80px;
+  }
+}
 .chefs-section__title::before, .chefs-section__title::after {
-  display: block;
-  width: 352px;
-  border: 2px solid var(--color-brand-light);
-  content: "";
-  /*налаштовуємо позиції - розміщення на формі для псевдоелементів*/
-  position: absolute;
-  bottom: 24px; /*посуваємо до нижньої межі і додаємо відступ згідно макету*/
+  display: none;
 }
-.chefs-section__title::before {
-  left: 0;
+@media screen and (min-width: 1280px) {
+  .chefs-section__title::before, .chefs-section__title::after {
+    display: block;
+    width: 352px;
+    border: 2px solid var(--color-brand-light);
+    content: "";
+    /*налаштовуємо позиції - розміщення на формі для псевдоелементів*/
+    position: absolute;
+    bottom: 24px; /*посуваємо до нижньої межі і додаємо відступ згідно макету*/
+  }
 }
-.chefs-section__title::after {
-  right: 0;
+@media screen and (min-width: 1280px) {
+  .chefs-section__title::before {
+    left: 0;
+  }
+  .chefs-section__title::after {
+    right: 0;
+  }
 }
 .chefs-section__list {
   display: flex; /*щоб картки стали в ряд, перед цим було створено клас chefs-list і  */
-  gap: 40px 30px; /*1-й відповідає за відступ по висоті між картками, 2-й по-ширині*/
+  flex-direction: column;
   flex-wrap: wrap; /*якщо будуть додаватися нові каркти кухарів,
 то картки будуть переноситися, а не пробувати влізти в один рядок,
 стискаючи існуючі*/
+  gap: 20px;
 }
-.chefs-section__item {
-  flex-basis: calc((100% - 30px) / 2);
-  /*щоб у ряд поміщалося лише 2 картки і дилили простір порівну, 
+@media screen and (min-width: 768px) {
+  .chefs-section__list {
+    flex-direction: row;
+    gap: 40px 30px; /*1-й відповідає за відступ по висоті між картками, 2-й по-ширині*/
+  }
+}
+@media screen and (min-width: 768px) {
+  .chefs-section__item {
+    flex-basis: calc((100% - 30px) / 2);
+    /*щоб у ряд поміщалося лише 2 картки і дилили простір порівну, 
     та віднімаємо геп*/
-  /*обов'язково зазаначаємо пробіли у формулі*/
+    /*обов'язково зазаначаємо пробіли у формулі*/
+  }
 }
 
-/*8.1. Chef-card*/
-.chef-card {
-  display: flex;
-  gap: 30px;
-}
-.chef-card__photo {
-  border-radius: 4px 4px 4px 200px;
-  box-shadow: -16px 16px 0 0 var(--color-primary-light), -16px 16px 0 2px var(--color-secondary-dark); /*псевдоелементом додали рамку з радіусом*/
-}
-.chef-card__title {
-  margin-bottom: 16px;
-  font-size: 40px;
-  font-weight: 600;
-}
-.chef-card__text {
-  margin-bottom: 24px;
-}
-.chef-card__text:last-child {
-  /*прибираємо відступ після останнього параграфа*/
-  margin-bottom: 0px;
-  /* можна було б обрати такий варінт: для осіх, окрім останнього:
-  .chef-text p:not(:last-child) {margin-bottom: 24px;}
-    але він не спрацює, бо вище задається обов. відступ для усіх у 18рх)
-  */
-}
-
-/*9. Formats-section*/
-/*Formats-section*/
-.formats-section__container {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-.formats-section__title {
-  margin-bottom: 80px;
-}
-.formats-section__list {
-  display: flex; /*щоб розташувати картки в ряд*/
-  flex-wrap: wrap; /*щоб блоки переносилися на новий рядок,якщо у рядку більше 3-х*/
-  gap: 20px; /*проміжок між картками*/
-}
-.formats-section__item {
-  flex-basis: calc((100% - 40px) / 3);
-  /*розрахувати - задати для браузера, 
-  що розмір блоку спику має бути третя частина, 
-  при цьому відняти суму гепів між блоками. Якщо не задати, 
-  то блоки будуть звужуватися/розширятися в залежності від розміру вікна.
-  П.С. у формулі calc - обов. усе має розділятися пробілами!!!, інакше не спрацьовує */
-}
-
-/*9.1. Format-card*/
-.format-card {
-  position: relative;
-  height: 444px;
-  padding: 24px;
-  /*задаємо градієнт для блоку, з фігма*/
-  background-image: linear-gradient(180deg, rgba(49, 38, 26, 0) 55.21%, rgba(49, 38, 26, 0.71) 72.92%, var(--color-primary-dark) 100%);
-  /*border: 1px solid lightgray; - видаляємо*/
-  border-radius: 16px;
-  box-shadow: 0px 4px 4px 0 #000000; /*задаємо тінь для блоку, з фігма*/
-  transition: transform 0.3s; /*задаємо тривалість переходу - плавність*/
-  /*додаємо влстивості, щоб текст у картці відображався по нижньому краю*/
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-.format-card:hover {
-  transform: scale(1.05);
-  /*задаємо візуальне збільшення картки при наведенні на неї*/
-}
-.format-card__image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-.format-card__title {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--color-primary-light);
-}
-.format-card__text {
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--color-primary-light);
-}
-
-/*10. Carousel*/
-/*Carousel*/
-.carousel-button {
-  display: flex;
-  align-items: center; /*робить елементи вирівняними по центру зверху–вниз, по вертикалі*/
-  justify-content: center; /*Вирівнює елементи по головній осі, по горизонталі*/
-  flex-shrink: 0; /*властивість, щоб елемент не стискався, фіксує ширину*/
-  width: 44px;
-  height: 44px;
-  padding: 0; /*прибираємо паддінги, що авт.було додано браузером*/
-  background-color: transparent; /*щоб задати прозорий фон заливки*/
-  border-radius: 50%; /**щоб зробити кнопку круглою, інкше - квадрат*/
-  border: 1px solid var(--color-primary-dark);
-  cursor: pointer; /*щоб при наведенні змінювався вигляд курсору*/
-}
-
-/*Повертаємо стрілочку вправо для каруселі*/
-.carousel-button.next {
-  /*читається як: якщо з класом "carousel-button", 
-  є клас "next", 
-  тоді треба виконати поврот стрілочки*/
-  transform: rotate(180deg);
-}
-
-.carousel-arrow {
-  fill: var(--color-primary-dark); /*колір стрілочки (самого елемента)*/
-}
-
-.carousel-button:hover {
-  background-color: var(--color-primary-dark);
-}
-
-.carousel-button:hover .carousel-arrow {
-  /*при натисканні на кнопочку, 
-  елемент в середині має мінюватися на*/
-  fill: var(--color-primary-light);
-}
-
-/*11. Contact-section*/
+/*Contact-section*/
 /*Contact-section*/
 .contact-section {
   padding-bottom: 96px;
 }
 .contact-section__container {
   display: flex;
-  gap: 32px;
+  flex-direction: column;
+  gap: 24px;
+}
+@media screen and (min-width: 768px) {
+  .contact-section__container {
+    flex-direction: row;
+    gap: 32px;
+  }
 }
 .contact-section__title {
   margin-bottom: 16px;
@@ -522,13 +302,40 @@ ul {
 }
 .contact-section__map {
   flex-shrink: 0; /*щоб карта не стисклася, фіксуємо*/
-  border: none;
+  height: 176px;
+  margin: 0 -24px;
   border-radius: 16px;
+  border: none;
+}
+@media screen and (min-width: 768px) {
+  .contact-section__map {
+    margin: auto;
+    width: 320px;
+    height: 500px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .contact-section__map {
+    width: 600px;
+    height: 595px;
+  }
 }
 
-/*12. Footer*/
+/*Container*/
+/*Container*/
+.container {
+  width: 100%; /*задаємо, щоб розмір вікна змінювався в залежності від розміру екрана*/
+  max-width: 1288px; /*фіксуємо максимальну ширину блока+враховуємо паддінги*/
+  margin: 0 auto; /*вирівнюємо по-середині, 
+інакше за замовчуванням вирівнювання зліва 
+і ширина не може бути зафіксована*/
+  padding: 0 24px;
+}
+
+/*Footer*/
 /*Footer*/
 .footer {
+  text-align: center;
   padding: 32px 0; /*паддінги завжди додаємо для самого верхнього елементу: для самої секції*/
   position: relative; /*якщо не задати значення для position футеру, 
 то псевдоелемент буде розміщуватися по відношенні до body, 
@@ -539,83 +346,273 @@ ul {
   background-image: url("../images/footer-background.png");
   background-size: cover;
   background-position: center;
+  /*додаємо псевдоелементи  до футеру - малюнки хлибинок
+  та позиціонуємо*/
 }
-
-/*додаємо псевдоелементи  до футеру - малюнки хлибинок
-та позиціонуємо*/
-.footer::before,
-.footer::after {
+@media screen and (min-width: 768px) {
+  .footer {
+    text-align: left;
+  }
+}
+.footer::before, .footer::after {
   position: absolute;
   bottom: 0;
   background-repeat: no-repeat;
   content: "";
 }
-
 .footer::before {
   left: 0;
   width: 180px;
   height: 120px;
   background-image: url("../images/decor-bread-small.png");
 }
-
 .footer::after {
   right: 0;
   width: 380px;
   height: 190px;
   background-image: url("../images/decor-bread-large.png");
 }
-
-.footer-container {
+.footer__container {
   display: flex;
+  flex-direction: column;
   gap: 20px;
 }
-
-.footer-nav,
-.footer-address {
+@media screen and (min-width: 768px) {
+  .footer__container {
+    flex-direction: row;
+  }
+}
+.footer__nav, .footer__address {
   display: flex;
+  flex-direction: column;
   flex-basis: 50%; /*краще ніж марджени, не фіксовано розмір, 
 буде пропорційно зменшуватися при зменшенні екрану*/
   gap: 20px;
 }
-
-.footer-logo,
-.footer-menu {
+@media screen and (min-width: 768px) {
+  .footer__nav, .footer__address {
+    flex-direction: row;
+    flex-basis: 50%;
+  }
+}
+.footer__logo, .footer__menu {
   flex-grow: 1; /*майже теж саме. що "flex-basis: 50%;" 
 - але краще використовувати "flex-grow: 1";
 краще ніж марджени, не фіксовано розмір, 
 буде пропорційно зменшуватися при зменшенні екрану*/
 }
-
-.address-list,
-.address-info {
+.footer__address-list, .footer__address-info {
   flex-grow: 1;
 }
-
-.address-link {
+.footer__address-link {
   color: var(--color-primary-light);
   font-weight: 300;
   text-decoration: none;
 }
-
-.address-link:hover {
+.footer__address-link:hover {
   color: var(--color-brand-normal);
 }
-
-.address-icon {
+.footer__address-icon {
   fill: var(--color-primary-light); /*через властивість fill задається заливку для іконок*/
   /*stroke: brown; /*щоб задати обводку для елементів іконки - прибираємо, бо не треба зараз*/
 }
-
-.address-icon:hover {
+.footer__address-icon:hover {
   fill: var(--color-brand-normal);
 }
-
-.address-copyright {
+.footer__address-copyright {
   font-size: 14px;
   color: var(--color-secondary-dark);
 }
 
-/*13. Modal*/
+/*Formats-section*/
+/*Formats-section*/
+.formats-section__slider {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.formats-section__container {
+  overflow: hidden;
+}
+.formats-section__list {
+  margin-bottom: 32px;
+}
+.formats-section__button.carousel-button {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .formats-section__button.carousel-button {
+    display: flex;
+  }
+}
+
+/*  Усі нижні властивості видалили, 
+бо деякі вже задані рівнями вище
+
+
+  &__title {
+    margin-bottom: 80px;
+  }
+
+  &__list {
+    display: flex; /*щоб розташувати картки в ряд*
+    flex-wrap: wrap; /*щоб блоки переносилися на новий рядок,якщо у рядку більше 3-х*
+    gap: 20px; /*проміжок між картками*
+  }*/
+/* &__item {
+    flex-basis: calc((100% - 40px) / 3);
+    /*розрахувати - задати для браузера, 
+  що розмір блоку спику має бути третя частина, 
+  при цьому відняти суму гепів між блоками. Якщо не задати, 
+  то блоки будуть звужуватися/розширятися в залежності від розміру вікна.
+  П.С. у формулі calc - обов. усе має розділятися пробілами!!!, інакше не спрацьовує 
+  }
+   - видаляємо це налаштування, 
+   бо для моб.версій змінюємо на переключення між карточками
+  */
+/*Header*/
+/*Header*/
+.header {
+  /*розтягуємо хедер на Блок вгорі у т.ч. */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 16px; /*додаємо відступ зверху для блоку, як на прототипі*/
+}
+@media screen and (min-width: 1280px) {
+  .header {
+    padding-top: 32px; /*додаємо відступ зверху для блоку, як на прототипі*/
+  }
+}
+.header__container {
+  display: flex; /*задаємо флекс-контейнер*/
+  align-items: center; /*щоб елементи не розтягувалися на всю висоту контейнеру, 
+а зберігали задану для них висоту/відступи*/
+  gap: 40px; /*відступи справа і зліву, щоб при зменшенні екрану не злипалося*/
+}
+.header__nav {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /*щоб розтягнути по ширині у вільному місці контейнеру*/
+  gap: 40px; /*відступи справа і зліву, щоб при зменшенні екрану не злипалося*/
+}
+.header__menu {
+  display: none; /* щоб верхнє меню пропадало, 
+якщо зменшується ширина екрану*/
+}
+@media screen and (min-width: 1280px) {
+  .header__menu {
+    display: flex; /*усі елементи стали в рядочок*/
+    gap: 64px; /*додає зазори між елементами усього меню*/
+    flex-grow: 1; /*щоб розтягнути по ширині у вільному місці контейнеру*/
+    justify-content: center; /*властивість, 
+що відповідає за вирівнювання вздовж головної горизонтальної вісі*/
+  }
+}
+.header__button.button {
+  display: none; /* щоб кнопка пропадала зверху, 
+якщо зменшується ширина екрану*/
+}
+@media screen and (min-width: 1280px) {
+  .header__button.button {
+    display: block;
+  }
+}
+.header__burger {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  fill: var(--color-primary-light);
+}
+@media screen and (min-width: 1280px) {
+  .header__burger {
+    display: none; /* щоб кнопка була відсутня для великого екрану*/
+  }
+}
+
+/*Hero section - стилі головного заголовка*/
+/*Hero section - стилі головного заголовка*/
+/*для головного заголовка зазавичай назва класу:hero-title*/
+.hero-section {
+  padding: 124px 0;
+  background-image: linear-gradient(102.76deg, rgba(18, 18, 17, 0.78) 2.03%, rgba(18, 18, 17, 0.6) 58.46%, rgba(18, 18, 17, 0) 90.36%), url("../images/hero-section-background.jpg");
+  background-repeat: no-repeat;
+  background-position: center top; /*щоб по осі х - вирівнювалося по центру, 
+а по осі у - по верху, щоб не обрізалися обличчя на картинці, 
+якщо розміри екрану будуть менші*/
+  background-size: cover; /*щоб зображення займало усемь простір секції, 
+без спотворення пропорції*/
+  /*background-attachment: fixed; /*фіксація зображення про скролінгу екрана для декорративного ефекту*/
+  /*ритинізуємо екран - налаштовуємо для Макбуків, щоб браузер обирав інше зображення*/
+}
+@media screen and (min-width: 1280px) {
+  .hero-section {
+    padding: 272px 0;
+  }
+}
+@media screen and (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .hero-section {
+    background-image: linear-gradient(102.76deg, rgba(18, 18, 17, 0.78) 2.03%, rgba(18, 18, 17, 0.6) 58.46%, rgba(18, 18, 17, 0) 90.36%), url("../images/hero-section-background@2x.jpg");
+  }
+}
+.hero-section__title {
+  margin-bottom: 48px;
+  color: var(--color-primary-light);
+  text-align: center;
+  font-size: 67px;
+  line-height: 1;
+  font-weight: 900;
+}
+@media screen and (min-width: 1280px) {
+  .hero-section__title {
+    margin-bottom: 0;
+    font-size: 128px;
+    line-height: 1.5;
+  }
+}
+.hero-section__button.button {
+  margin: 0 auto;
+}
+@media screen and (min-width: 1280px) {
+  .hero-section__button.button {
+    display: none;
+  }
+}
+
+/*Варіант 1: для виділення першого слова в hero-title та chefs-section 
+іншим кольором, найбільш доречно присвоїти йому окремий клас accent
+.hero-title .accent {
+  color: var(--color-brand-normal);
+}
+
+потім цей клас видалили і замінили на text-brand -> в _texts.scss - як окремий блок,
+що може використовуватися в різних місцях*/
+/*Mobile-menu*/
+/*mobile-menu*/
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary-light);
+  transform: translateX(100%); /*посуваємо за межі вікна*/
+  transition: transform 0.3s;
+}
+.mobile-menu.is-open {
+  transform: translateX(0);
+  /*але, якщо натискаємо на кнопку " сендвічу" - то показувати*/
+}
+.mobile-menu__btn-close {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+}
+
+/*Modal*/
 /*Modal - Стилі для модального вікна (вкладеної картки)*/
 /*Додаємо затемнений фон для модального вікна .backdrop*/
 .backdrop {
@@ -672,11 +669,247 @@ ul {
   margin-bottom: 32px;
 }
 .modal__button {
-  display: block;
   margin: 0 auto 24px;
 }
 
-/*14. Forms-input*/
+/*Section*/
+/*Section*/
+.section {
+  padding: 20px 0;
+}
+@media screen and (min-width: 768px) {
+  .section {
+    padding: 48px 0; /*задаємо для усіх секцій відступи вертикальні
+(і зверху, і знизу) - по 48, а горизонтальні - 0,через padding. 
+Це правильніше, ніж через margin */
+  }
+}
+.section__title {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.5; /*задається коефіцієнтом*/
+}
+@media screen and (min-width: 768px) {
+  .section__title {
+    font-size: 64px;
+    line-height: 1.3; /*задається коефіцієнтом: (line height 84px/font-size 64px) */
+  }
+}
+.section__title--centered {
+  /*для заголовків, що мають бути по-центру сторінки*/
+  text-align: center;
+}
+
+/*Traditions-section*/
+/*Traditions-section*/
+.traditions-section {
+  padding-top: 40px;
+  /*клас .traditions-text.limited змінили на модифікатор: traditions-section__text--limited*/
+}
+@media screen and (min-width: 768px) {
+  .traditions-section {
+    padding-top: 96px;
+  }
+}
+.traditions-section__container {
+  display: flex; /*розташовуємо контакт і зображення (два блоки) в рядок*/
+  align-items: flex-start; /*щоб картинка не стискалася, при зменшенні*/
+  justify-content: space-between;
+  gap: 40px; /*невеликий зазор між блоками*/
+}
+.traditions-section__content {
+  min-width: 710px;
+}
+.traditions-section__title {
+  margin-bottom: 42px;
+}
+.traditions-section__text--limited {
+  /*щоб звернутися саме до 2-го блоку (limited) класу traditions-text*/
+  max-width: 340px; /*щоб задати фіксовано ширину до цього блоку, 
+а не виористовути примусове перенеення через властивість <br>, 
+бо так некооектно*/
+}
+.traditions-section__image {
+  display: none;
+  border-radius: 400px 400px 0 0;
+}
+@media screen and (min-width: 768px) {
+  .traditions-section__image {
+    display: block;
+  }
+}
+
+/*Button - стилі кнопки*/
+/*Button - стилі кнопки*/
+.button {
+  display: block;
+  padding: 16px 32px;
+  color: var(--color-primary-light);
+  font-weight: 600;
+  background-color: var(--color-brand-normal);
+  border: 2px solid var(--color-brand-normal);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/*стиль при наведенні курсору*/
+.button:hover {
+  color: var(--color-brand-dark);
+  background-color: transparent;
+}
+
+/* 
+  Нижче приклад форматування для стану кнопки - "кнопка неактивна"
+    .button:disabled 
+    {
+    color:gray; 
+    background-color: lightgray;
+    border-color: currentColor; - додаємо наслідування кольору
+    cursor: not-allowed;
+    }
+  Не застосовуємо у нашому прикладі, 
+  бо нажаль через CSS не можна налаштувати правила, треба javaскрипт.
+  */
+/*Carousel*/
+/*Carousel*/
+.carousel-button {
+  display: flex;
+  align-items: center; /*робить елементи вирівняними по центру зверху–вниз, по вертикалі*/
+  justify-content: center; /*Вирівнює елементи по головній осі, по горизонталі*/
+  flex-shrink: 0; /*властивість, щоб елемент не стискався, фіксує ширину*/
+  width: 44px;
+  height: 44px;
+  padding: 0; /*прибираємо паддінги, що авт.було додано браузером*/
+  background-color: transparent; /*щоб задати прозорий фон заливки*/
+  border-radius: 50%; /**щоб зробити кнопку круглою, інкше - квадрат*/
+  border: 1px solid var(--color-primary-dark);
+  cursor: pointer; /*щоб при наведенні змінювався вигляд курсору*/
+  /*Повертаємо стрілочку вправо для каруселі*/
+}
+.carousel-button.next {
+  /*читається як: якщо з класом "carousel-button", 
+  є клас "next", 
+  тоді треба виконати поврот стрілочки*/
+  transform: rotate(180deg);
+}
+.carousel-button:hover {
+  background-color: var(--color-primary-dark);
+}
+.carousel-button:hover .carousel-arrow {
+  /*при натисканні на кнопочку, 
+  елемент в середині має мінюватися на*/
+  fill: var(--color-primary-light);
+}
+
+.carousel-arrow {
+  fill: var(--color-primary-dark); /*колір стрілочки (самого елемента)*/
+}
+
+/*Chef-card*/
+.chef-card {
+  display: flex;
+  align-items: flex-start; /*щоб зображення, що прив"язані до тексту, 
+не розтігувалися за текстом, при зменшенні екрану*/
+  gap: 16px;
+}
+@media screen and (min-width: 1280px) {
+  .chef-card {
+    gap: 30px;
+  }
+}
+.chef-card__photo {
+  width: 140px;
+  border-radius: 4px 4px 4px 200px;
+  box-shadow: -16px 16px 0 0 var(--color-primary-light), -16px 16px 0 2px var(--color-secondary-dark); /*псевдоелементом додали рамку з радіусом*/
+}
+@media screen and (min-width: 1280px) {
+  .chef-card__photo {
+    width: 240px;
+  }
+}
+.chef-card__title {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 600;
+}
+@media screen and (min-width: 768px) {
+  .chef-card__title {
+    font-size: 40px;
+  }
+}
+.chef-card__text {
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.chef-card__text:last-child {
+  /*прибираємо відступ після останнього параграфа*/
+  margin-bottom: 0px;
+  /* можна було б обрати такий варінт: для осіх, окрім останнього:
+  .chef-text p:not(:last-child) {margin-bottom: 24px;}
+    але він не спрацює, бо вище задається обов. відступ для усіх у 18рх)
+  */
+}
+@media screen and (min-width: 768px) {
+  .chef-card__text {
+    font-size: 18px;
+  }
+}
+
+/*Form-terms*/
+.form-terms {
+  margin: 0 auto;
+  max-width: 220px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+.form-terms__link {
+  color: var(--color-primary-dark);
+  text-underline-offset: 2px;
+}
+
+/*Format-card*/
+.format-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 444px;
+  padding: 24px;
+  /*задаємо градієнт для блоку, з фігма*/
+  background-image: linear-gradient(180deg, rgba(49, 38, 26, 0) 55.21%, rgba(49, 38, 26, 0.71) 72.92%, var(--color-primary-dark) 100%);
+  /*border: 1px solid lightgray; - видаляємо*/
+  border-radius: 16px;
+  /*box-shadow: 0px 4px 4px 0 #000000; /*задаємо тінь для блоку, з фігма*/
+  overflow: hidden;
+  /*transition: transform 0.3s; /*задаємо тривалість переходу - плавність*/
+  /*додаємо влстивості, щоб текст у картці відображався по нижньому краю*/
+  /*&:hover {
+    transform: scale(1.05);
+    /*задаємо візуальне збільшення картки при наведенні на неї*
+  }*/
+}
+.format-card__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.format-card__title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-primary-light);
+}
+.format-card__text {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color-primary-light);
+}
+
+/*Forms-input*/
 /*Forms - input - для використання на декіькох формах*/
 .input {
   position: relative; /*дозволяє зміщувати елемент, прив’язувати до себе дочерні елементи.*/
@@ -739,16 +972,36 @@ ul {
 у нашому прикладі не застосовуємо - 
 від дизайнера немає вимог до цього стану
 */
-/*.14.1. Form-terms*/
-.form-terms {
-  margin: 0 auto;
-  max-width: 220px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.5;
-  text-align: center;
+/*link - стилі посилань*/
+/*link - стилі посилань*/
+.link {
+  color: var(--color-primary-light);
+  text-decoration: none; /*щоб прибрати підкреслення посилань за замовчуванням від браузера*/
+  transition: color 0.3s; /*задаємо перехід до елементу, але не до події!!!*/
 }
-.form-terms__link {
-  color: var(--color-primary-dark);
-  text-underline-offset: 2px;
+
+/*стиль при наведенні курсору на посилання -hover */
+.link:hover {
+  color: var(--color-brand-normal);
+  /*font-weight: 600;-прибрали цю властивість для посилань, 
+  інакше при наведенні елементи стрибають, 
+  бо шрифт(елемент) стає більшим, так не має бути*/
+}
+
+/*Кнопочки для слайдеру внизу*/
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.pagination__button {
+  width: 12px;
+  height: 12px;
+  padding: 0; /*паддінги за замовчуванням у кнопок - має бути 0*/
+  background-color: var(--color-secondary-dark);
+  border-radius: 50%;
+}
+.pagination__button--active {
+  background-color: var(--color-brand-normal);
 }/*# sourceMappingURL=main.css.map */
